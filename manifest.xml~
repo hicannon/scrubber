@@ -11,6 +11,18 @@
   <depend package="rospy"/>
   <depend package="roscpp"/>
   <depend package="gazebo"/>
+  <depend package="std_msgs"/>
+  <depend package="sensor_msgs"/>
+  <depend package="opencv2"/>
+  <depend package="cv_bridge"/>
+  <depend package="image_transport"/>
+  <depend package="arm_navigation_msgs"/>
+  <depend package="kinematics_msgs"/>
+  <depend package="actionlib_msgs"/>
+  <depend package="pr2_controllers_msgs"/>
+  <depend package="arm_navigation_msgs"/>
+  <depend package="planning_environment"/>
+  <depend package="pr2_arm_navigation_perception"/>
   <export>
     <gazebo gazebo_media_path="${prefix}" />
   </export>
