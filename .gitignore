@@ -15,3 +15,5 @@
 #ros building
 build/
 bin/
+
+.DS_Store
