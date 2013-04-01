@@ -15,7 +15,7 @@ class Segment:
   def __init__(self):
     self.image_pub = rospy.Publisher("outpy",Image)
 
-    #cv.NamedWindow("Image window", 1)
+    cv2.namedWindow("Image window", flags=cv2.CV_WINDOW_AUTOSIZE)
     self.bridge = CvBridge()
     self.image_sub = rospy.Subscriber("/head_mount_kinect/rgb/image_raw",Image,self.callback)
 
@@ -45,7 +45,7 @@ class Segment:
     
     cv2.watershed(cv_image,marker32)
     m = cv2.convertScaleAbs(marker32)
-    cv2.imshow("image", m)
+    cv2.imshow("Image window", m)
     cv.WaitKey(5)
     try:
       temp = self.bridge.cv_to_imgmsg(cv.fromarray(m), "mono8")
