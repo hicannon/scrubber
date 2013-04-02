@@ -32,6 +32,7 @@ def test(dat, windowSize, thresh):
         draw = ImageDraw.Draw(im)
         for box in dat[image]:
             coordinates = box.split(" ")
+            print [int(x) for x in coordinates]
             draw.rectangle([int(x) for x in coordinates], outline="red")
         im = fixSize(im)
         
@@ -44,7 +45,7 @@ def test(dat, windowSize, thresh):
                 if temp[x,y]==255:
                     draw.rectangle(getBoxFromPoint(windowSize,x,y))
 
-        stats(dat,detected,windowSize,image,f)
+        stats(dat,detected,windowSize,image,f,sx,sy)
         
         
         im.show()
@@ -165,10 +166,13 @@ def getBoxFromPoint(windowSize, x,y):
     halfWidth = windowSize/2.0
     return (x*windowSize - halfWidth, y*windowSize - halfWidth, x*windowSize + halfWidth, y*windowSize + halfWidth)
 
-def boxWithinAreas(x,y,windowSize,regions):
+def boxWithinAreas(x,y,windowSize,regions,sx,sy):
+    ratio = 1.0
+    if sx > 1000:
+        ratio = 600.0/sx
     for region in regions:
         coordinates = region.split(" ")
-        if not ((x >= int(coordinates[0]) and y >= int(coordinates[1])) or (x+windowSize >= int(coordinates[0]) and y+windowSize >= int(coordinates[1]))):
+        if not ((x >= int(coordinates[0])*ratio and y >= int(coordinates[1])*ratio) or (x+windowSize >= int(coordinates[0])*ratio and y+windowSize >= int(coordinates[1])*ratio)):
             return False
     return True
     
@@ -193,16 +197,17 @@ def segment(fname):
     cv2.waitKey(300)
     raw_input("")
 
-def stats(dat, detected, windowSize, image, f):
+def stats(dat, detected, windowSize, image, f,sx,sy):
     foo = detected.load()
 
-    true_positives = 0
-    false_positives = 0
-    false_negatives = 0
+    true_positives = 0.0
+    false_positives = 0.0
+    false_negatives = 0.0
 
     for x in range(detected.size[0]):
             for y in range(detected.size[1]):
-                within = (foo[x,y]==255) and boxWithinAreas(x,y,windowSize,dat[image])
+                box = getBoxFromPoint(windowSize,x,y)
+                within = (foo[x,y]==255) and boxWithinAreas(box[0],box[1],windowSize,dat[image],sx,sy)
                 if (foo[x,y]==255 and within):
                     true_positives += 1
                 elif (foo[x,y]==255 and not within):
