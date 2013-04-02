@@ -20,6 +20,9 @@ def loadTrain(fname="train.dat"):
     return dat
 
 def test(dat, windowSize, thresh):
+    f = open('stats.csv', 'w+')
+    f.write("File,True positives,False positives,False negatives,Precision,Recall\n")
+
     for image in dat.keys():
         im = loadImage(image)
         sx,sy = im.size
@@ -40,6 +43,8 @@ def test(dat, windowSize, thresh):
             for y in range(detected.size[1]):
                 if temp[x,y]==255:
                     draw.rectangle(getBoxFromPoint(windowSize,x,y))
+
+        stats(dat,detected,windowSize,image,f)
         
         
         im.show()
@@ -159,6 +164,13 @@ def detectStainsMono(im, windowSize, thresh):
 def getBoxFromPoint(windowSize, x,y):
     halfWidth = windowSize/2.0
     return (x*windowSize - halfWidth, y*windowSize - halfWidth, x*windowSize + halfWidth, y*windowSize + halfWidth)
+
+def boxWithinAreas(x,y,windowSize,regions):
+    for region in regions:
+        coordinates = region.split(" ")
+        if not ((x >= int(coordinates[0]) and y >= int(coordinates[1])) or (x+windowSize >= int(coordinates[0]) and y+windowSize >= int(coordinates[1]))):
+            return False
+    return True
     
 def segment(fname):
     #Now with segmentation!
@@ -180,6 +192,40 @@ def segment(fname):
     cv2.imshow("Image window", m)
     cv2.waitKey(300)
     raw_input("")
+
+def stats(dat, detected, windowSize, image, f):
+    foo = detected.load()
+
+    true_positives = 0
+    false_positives = 0
+    false_negatives = 0
+
+    for x in range(detected.size[0]):
+            for y in range(detected.size[1]):
+                within = (foo[x,y]==255) and boxWithinAreas(x,y,windowSize,dat[image])
+                if (foo[x,y]==255 and within):
+                    true_positives += 1
+                elif (foo[x,y]==255 and not within):
+                    false_positives += 1
+                elif (foo[x,y]!=255 and within):
+                    false_negatives += 1
+
+    f.write(`image`+",")
+    # print "True positives: " + `true_positives`
+    f.write(`true_positives` + ",")
+    # print "False positives: " + `false_positives`
+    f.write(`false_positives` + ",")
+    # print "False negatives: " + `false_negatives`
+    f.write(`false_negatives` + ",")
+    print "Precision: " + `true_positives/(true_positives + false_positives)`
+    f.write(`true_positives/(true_positives + false_positives)` + ",")
+    if true_positives + false_negatives == 0:
+        print "Recall: 0"
+        f.write("0\n")
+    else:
+        print "Recall: " + `true_positives/(true_positives + false_negatives)`
+        f.write(`true_positives/(true_positives + false_negatives)` + "\n")
+
 test(loadTrain(),20, 100)
 #detectStains("how-to-get-blood-out-of-the-carpet.WidePlayer.jpg", 50)
 #detectStains("red-wine.jpg",25)

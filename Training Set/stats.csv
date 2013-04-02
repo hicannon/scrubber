@@ -1,0 +1,15 @@
+File,True positives,False positives,False negatives,Precision,Recall
+'bg_food_stain.jpg',0,86,0,0,0
+'how-to-get-blood-out-of-the-carpet.WidePlayer.jpg',0,9,0,0,0
+'2013-03-12 16.44.49.jpg',0,41,0,0,0
+'2013-03-27 19.20.07.jpg',0,55,0,0,0
+'011.jpg',0,270,0,0,0
+'2013-03-12 16.41.04.jpg',0,23,0,0,0
+'Grape-KoolAid-Carpet-Stain.jpg',0,56,0,0,0
+'oil-stain.JPG',0,125,0,0,0
+'cherry stain.JPG',0,126,0,0,0
+'2013-03-27 19.20.22.jpg',0,77,0,0,0
+'red-wine.jpg',0,20,0,0,0
+'2013-03-27 00.24.39.jpg',0,116,0,0,0
+'2013-03-12 16.42.59.jpg',0,21,0,0,0
+'2013-03-27 19.20.16.jpg',0,41,0,0,0
