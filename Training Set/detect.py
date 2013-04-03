@@ -45,10 +45,11 @@ def test(dat, windowSize, thresh):
                 if temp[x,y]==255:
                     draw.rectangle(getBoxFromPoint(windowSize,x,y))
 
-        stats(dat,detected,windowSize,image,f,sx,sy)
+        if image == "red-wine.jpg":
+            stats(dat,detected,windowSize,image,f,sx,sy)                    
+            im.show()
         
-        
-        im.show()
+
 def fixSize(im):
     sx,sy = im.size
     if sy>sx:
@@ -172,9 +173,9 @@ def boxWithinAreas(x,y,windowSize,regions,sx,sy):
         ratio = 600.0/sx
     for region in regions:
         coordinates = region.split(" ")
-        if not ((x >= int(coordinates[0])*ratio and y >= int(coordinates[1])*ratio) or (x+windowSize >= int(coordinates[0])*ratio and y+windowSize >= int(coordinates[1])*ratio)):
-            return False
-    return True
+        if ((x >= int(coordinates[0])*ratio and y >= int(coordinates[1])*ratio and x <= int(coordinates[2])*ratio and y <= int(coordinates[3])*ratio) or (x+windowSize >= int(coordinates[0])*ratio and y+windowSize >= int(coordinates[1])*ratio) and x+windowSize <= int(coordinates[2])*ratio and y+windowSize <= int(coordinates[3])*ratio):
+            return True
+    return False
     
 def segment(fname):
     #Now with segmentation!
@@ -208,6 +209,8 @@ def stats(dat, detected, windowSize, image, f,sx,sy):
             for y in range(detected.size[1]):
                 box = getBoxFromPoint(windowSize,x,y)
                 within = (foo[x,y]==255) and boxWithinAreas(box[0],box[1],windowSize,dat[image],sx,sy)
+                print `box[0]` + "," + `box[1]` + "," + `within`
+
                 if (foo[x,y]==255 and within):
                     true_positives += 1
                 elif (foo[x,y]==255 and not within):
@@ -216,7 +219,7 @@ def stats(dat, detected, windowSize, image, f,sx,sy):
                     false_negatives += 1
 
     f.write(`image`+",")
-    # print "True positives: " + `true_positives`
+    print "True positives: " + `true_positives`
     f.write(`true_positives` + ",")
     # print "False positives: " + `false_positives`
     f.write(`false_positives` + ",")
