@@ -234,7 +234,8 @@ def stats(dat, detected, windowSize, image, f,sx,sy):
         print "Recall: " + `true_positives/(true_positives + false_negatives)`
         f.write(`true_positives/(true_positives + false_negatives)` + "\n")
 
-test(loadTrain(),20, 100)
+if __name__=="__main__":
+	test(loadTrain(),20, 100)
 #detectStains("how-to-get-blood-out-of-the-carpet.WidePlayer.jpg", 50)
 #detectStains("red-wine.jpg",25)
 #detectStains("stains.jpg",10)
