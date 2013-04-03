@@ -20,10 +20,10 @@ def loadTrain(fname="train.dat"):
     return dat
 
 def test(dat, windowSize, thresh):
-    f = open('stats.csv', 'w+')
-    f.write("File,True positives,False positives,False negatives,Precision,Recall\n")
+    stat_array = []
 
     for image in dat.keys():
+        print image
         im = loadImage(image)
         sx,sy = im.size
         detected = detectStains(fixSize(im), windowSize, thresh)
@@ -44,11 +44,9 @@ def test(dat, windowSize, thresh):
             for y in range(detected.size[1]):
                 if temp[x,y]==255:
                     draw.rectangle(getBoxFromPoint(windowSize,x,y))
-
-        if image == "red-wine.jpg":
-            stats(dat,detected,windowSize,image,f,sx,sy)                    
-            im.show()
-        
+        stats(dat,detected,windowSize,image,sx,sy,stat_array)                    
+        im.show()
+    writestats(stat_array)
 
 def fixSize(im):
     sx,sy = im.size
@@ -168,13 +166,28 @@ def getBoxFromPoint(windowSize, x,y):
     return (x*windowSize - halfWidth, y*windowSize - halfWidth, x*windowSize + halfWidth, y*windowSize + halfWidth)
 
 def boxWithinAreas(x,y,windowSize,regions,sx,sy):
+    # x and y are post all transformations
     ratio = 1.0
+    rotate = False
+
+    if sx < sy:
+        # Flip 90deg CCW
+        rotate = True
+        temp = sx
+        sx = sy
+        sy = temp
+
     if sx > 1000:
         ratio = 600.0/sx
     for region in regions:
         coordinates = region.split(" ")
-        if ((x >= int(coordinates[0])*ratio and y >= int(coordinates[1])*ratio and x <= int(coordinates[2])*ratio and y <= int(coordinates[3])*ratio) or (x+windowSize >= int(coordinates[0])*ratio and y+windowSize >= int(coordinates[1])*ratio) and x+windowSize <= int(coordinates[2])*ratio and y+windowSize <= int(coordinates[3])*ratio):
-            return True
+        if rotate:
+            # print `int(coordinates[1])*ratio` + "," + `(sy-int(coordinates[0]))*ratio` + "," + `int(coordinates[3])*ratio` + "," + `(sy-int(coordinates[2]))*ratio`
+            if ((x >= int(coordinates[1])*ratio and y >= (sy-int(coordinates[2]))*ratio and x <= int(coordinates[3])*ratio and y <= (sy-int(coordinates[0]))*ratio) or (x+windowSize >= int(coordinates[1])*ratio and y+windowSize >= (sy-int(coordinates[2]))*ratio) and x+windowSize <= int(coordinates[3])*ratio and y+windowSize <= (sy-int(coordinates[0]))*ratio):
+                return True
+        else:
+            if ((x >= int(coordinates[0])*ratio and y >= int(coordinates[1])*ratio and x <= int(coordinates[2])*ratio and y <= int(coordinates[3])*ratio) or (x+windowSize >= int(coordinates[0])*ratio and y+windowSize >= int(coordinates[1])*ratio) and x+windowSize <= int(coordinates[2])*ratio and y+windowSize <= int(coordinates[3])*ratio):
+                return True
     return False
     
 def segment(fname):
@@ -198,18 +211,20 @@ def segment(fname):
     cv2.waitKey(300)
     raw_input("")
 
-def stats(dat, detected, windowSize, image, f,sx,sy):
+def stats(dat, detected, windowSize, image, sx, sy, output):
     foo = detected.load()
 
     true_positives = 0.0
     false_positives = 0.0
     false_negatives = 0.0
 
+    stat_row = []
+
     for x in range(detected.size[0]):
             for y in range(detected.size[1]):
                 box = getBoxFromPoint(windowSize,x,y)
-                within = (foo[x,y]==255) and boxWithinAreas(box[0],box[1],windowSize,dat[image],sx,sy)
-                print `box[0]` + "," + `box[1]` + "," + `within`
+                within = boxWithinAreas(box[0],box[1],windowSize,dat[image],sx,sy)
+                # print `box[0]` + "," + `box[1]` + "," + `within`
 
                 if (foo[x,y]==255 and within):
                     true_positives += 1
@@ -218,21 +233,34 @@ def stats(dat, detected, windowSize, image, f,sx,sy):
                 elif (foo[x,y]!=255 and within):
                     false_negatives += 1
 
-    f.write(`image`+",")
-    print "True positives: " + `true_positives`
-    f.write(`true_positives` + ",")
-    # print "False positives: " + `false_positives`
-    f.write(`false_positives` + ",")
-    # print "False negatives: " + `false_negatives`
-    f.write(`false_negatives` + ",")
-    print "Precision: " + `true_positives/(true_positives + false_positives)`
-    f.write(`true_positives/(true_positives + false_positives)` + ",")
+    stat_row.append(image)
+    stat_row.append(true_positives)
+    stat_row.append(false_positives)
+    stat_row.append(false_negatives)
+    stat_row.append(true_positives/(true_positives + false_positives))
     if true_positives + false_negatives == 0:
-        print "Recall: 0"
-        f.write("0\n")
+        stat_row.append(0)
     else:
-        print "Recall: " + `true_positives/(true_positives + false_negatives)`
-        f.write(`true_positives/(true_positives + false_negatives)` + "\n")
+        stat_row.append(true_positives/(true_positives + false_negatives))
+
+    output.append(stat_row)
+
+def writestats(stat_array):
+    f = open('stats.csv', 'w+')
+    f2 = open('overall_stats.csv','w+')
+
+    f.write("File,True positives,False positives,False negatives,Precision,Recall\n")
+
+    for row in stat_array:
+        f.write(`row[0]`+","+`row[1]`+","+`row[2]`+","+`row[3]`+","+`row[4]`+","+`row[5]`+"\n")
+
+    prec = [row[4] for row in stat_array]
+    rec = [row[5] for row in stat_array]
+    f2.write("Average precision: " + `sum(prec)/float(len(prec))` + "\n")
+    f2.write("Average recall: " + `sum(rec)/float(len(rec))` + "\n")
+
+    f.close()
+    f2.close()
 
 if __name__=="__main__":
 	test(loadTrain(),20, 100)
