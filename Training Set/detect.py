@@ -20,10 +20,10 @@ def loadTrain(fname="train.dat"):
     return dat
 
 def test(dat, windowSize, thresh):
-    f = open('stats.csv', 'w+')
-    f.write("File,True positives,False positives,False negatives,Precision,Recall\n")
+    stat_array = []
 
     for image in dat.keys():
+        print image
         im = loadImage(image)
         sx,sy = im.size
         detected = detectStains(fixSize(im), windowSize, thresh)
@@ -44,9 +44,9 @@ def test(dat, windowSize, thresh):
             for y in range(detected.size[1]):
                 if temp[x,y]==255:
                     draw.rectangle(getBoxFromPoint(windowSize,x,y))
-        stats(dat,detected,windowSize,image,f,sx,sy)                    
+        stats(dat,detected,windowSize,image,sx,sy,stat_array)                    
         im.show()
-        
+    writestats(stat_array)
 
 def fixSize(im):
     sx,sy = im.size
@@ -172,7 +172,6 @@ def boxWithinAreas(x,y,windowSize,regions,sx,sy):
 
     if sx < sy:
         # Flip 90deg CCW
-        print "FLIP"
         rotate = True
         temp = sx
         sx = sy
@@ -212,12 +211,14 @@ def segment(fname):
     cv2.waitKey(300)
     raw_input("")
 
-def stats(dat, detected, windowSize, image, f,sx,sy):
+def stats(dat, detected, windowSize, image, sx, sy, output):
     foo = detected.load()
 
     true_positives = 0.0
     false_positives = 0.0
     false_negatives = 0.0
+
+    stat_row = []
 
     for x in range(detected.size[0]):
             for y in range(detected.size[1]):
@@ -232,21 +233,34 @@ def stats(dat, detected, windowSize, image, f,sx,sy):
                 elif (foo[x,y]!=255 and within):
                     false_negatives += 1
 
-    f.write(`image`+",")
-    print "True positives: " + `true_positives`
-    f.write(`true_positives` + ",")
-    # print "False positives: " + `false_positives`
-    f.write(`false_positives` + ",")
-    # print "False negatives: " + `false_negatives`
-    f.write(`false_negatives` + ",")
-    print "Precision: " + `true_positives/(true_positives + false_positives)`
-    f.write(`true_positives/(true_positives + false_positives)` + ",")
+    stat_row.append(image)
+    stat_row.append(true_positives)
+    stat_row.append(false_positives)
+    stat_row.append(false_negatives)
+    stat_row.append(true_positives/(true_positives + false_positives))
     if true_positives + false_negatives == 0:
-        print "Recall: 0"
-        f.write("0\n")
+        stat_row.append(0)
     else:
-        print "Recall: " + `true_positives/(true_positives + false_negatives)`
-        f.write(`true_positives/(true_positives + false_negatives)` + "\n")
+        stat_row.append(true_positives/(true_positives + false_negatives))
+
+    output.append(stat_row)
+
+def writestats(stat_array):
+    f = open('stats.csv', 'w+')
+    f2 = open('overall_stats.csv','w+')
+
+    f.write("File,True positives,False positives,False negatives,Precision,Recall\n")
+
+    for row in stat_array:
+        f.write(`row[0]`+","+`row[1]`+","+`row[2]`+","+`row[3]`+","+`row[4]`+","+`row[5]`+"\n")
+
+    prec = [row[4] for row in stat_array]
+    rec = [row[5] for row in stat_array]
+    f2.write("Average precision: " + `sum(prec)/float(len(prec))` + "\n")
+    f2.write("Average recall: " + `sum(rec)/float(len(rec))` + "\n")
+
+    f.close()
+    f2.close()
 
 test(loadTrain(),20, 100)
 #detectStains("how-to-get-blood-out-of-the-carpet.WidePlayer.jpg", 50)
