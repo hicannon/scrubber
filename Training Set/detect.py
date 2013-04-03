@@ -44,10 +44,8 @@ def test(dat, windowSize, thresh):
             for y in range(detected.size[1]):
                 if temp[x,y]==255:
                     draw.rectangle(getBoxFromPoint(windowSize,x,y))
-
-        if image == "red-wine.jpg":
-            stats(dat,detected,windowSize,image,f,sx,sy)                    
-            im.show()
+        stats(dat,detected,windowSize,image,f,sx,sy)                    
+        im.show()
         
 
 def fixSize(im):
@@ -168,13 +166,29 @@ def getBoxFromPoint(windowSize, x,y):
     return (x*windowSize - halfWidth, y*windowSize - halfWidth, x*windowSize + halfWidth, y*windowSize + halfWidth)
 
 def boxWithinAreas(x,y,windowSize,regions,sx,sy):
+    # x and y are post all transformations
     ratio = 1.0
+    rotate = False
+
+    if sx < sy:
+        # Flip 90deg CCW
+        print "FLIP"
+        rotate = True
+        temp = sx
+        sx = sy
+        sy = temp
+
     if sx > 1000:
         ratio = 600.0/sx
     for region in regions:
         coordinates = region.split(" ")
-        if ((x >= int(coordinates[0])*ratio and y >= int(coordinates[1])*ratio and x <= int(coordinates[2])*ratio and y <= int(coordinates[3])*ratio) or (x+windowSize >= int(coordinates[0])*ratio and y+windowSize >= int(coordinates[1])*ratio) and x+windowSize <= int(coordinates[2])*ratio and y+windowSize <= int(coordinates[3])*ratio):
-            return True
+        if rotate:
+            # print `int(coordinates[1])*ratio` + "," + `(sy-int(coordinates[0]))*ratio` + "," + `int(coordinates[3])*ratio` + "," + `(sy-int(coordinates[2]))*ratio`
+            if ((x >= int(coordinates[1])*ratio and y >= (sy-int(coordinates[2]))*ratio and x <= int(coordinates[3])*ratio and y <= (sy-int(coordinates[0]))*ratio) or (x+windowSize >= int(coordinates[1])*ratio and y+windowSize >= (sy-int(coordinates[2]))*ratio) and x+windowSize <= int(coordinates[3])*ratio and y+windowSize <= (sy-int(coordinates[0]))*ratio):
+                return True
+        else:
+            if ((x >= int(coordinates[0])*ratio and y >= int(coordinates[1])*ratio and x <= int(coordinates[2])*ratio and y <= int(coordinates[3])*ratio) or (x+windowSize >= int(coordinates[0])*ratio and y+windowSize >= int(coordinates[1])*ratio) and x+windowSize <= int(coordinates[2])*ratio and y+windowSize <= int(coordinates[3])*ratio):
+                return True
     return False
     
 def segment(fname):
@@ -208,8 +222,8 @@ def stats(dat, detected, windowSize, image, f,sx,sy):
     for x in range(detected.size[0]):
             for y in range(detected.size[1]):
                 box = getBoxFromPoint(windowSize,x,y)
-                within = (foo[x,y]==255) and boxWithinAreas(box[0],box[1],windowSize,dat[image],sx,sy)
-                print `box[0]` + "," + `box[1]` + "," + `within`
+                within = boxWithinAreas(box[0],box[1],windowSize,dat[image],sx,sy)
+                # print `box[0]` + "," + `box[1]` + "," + `within`
 
                 if (foo[x,y]==255 and within):
                     true_positives += 1
