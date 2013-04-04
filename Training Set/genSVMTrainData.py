@@ -1,6 +1,6 @@
 import detect
 import random
-from PIL import ImageOps, ImageFilter
+from PIL import ImageOps, ImageFilter, ImageStat
 
 def writeSVMTrain(labelFname="train.dat", svmFname="SVMDat.dat"):
 	labels = detect.loadTrain(labelFname)
@@ -8,14 +8,17 @@ def writeSVMTrain(labelFname="train.dat", svmFname="SVMDat.dat"):
 	with f:
 		for image in labels.keys():
 			im = detect.loadImage(image)
-			inst = genSVMTrainInstance(im, labels[image])
-			for example in inst:
+			print image
+			(pos,neg,combined) = genSVMTrainInstance(im, labels[image])
+			#print len(pos), len(neg)
+			for example in pos + random.sample(neg, min(len(neg),len(pos))):
 				#write label
 				f.write(str(example[0])+ " ")
 				featureNum = 1
 				for item in getVector(example):
 					f.write(str(featureNum)+":"+str(item)+" ")
 					featureNum+=1
+			
 				"""featureNum = 1
 				#write diffs
 				for featType in example[1:]:
@@ -24,6 +27,7 @@ def writeSVMTrain(labelFname="train.dat", svmFname="SVMDat.dat"):
 						featureNum+=1"""
 				f.write("\n")
 def getVector(features):
+	#print "getVec", features
 	out = []
 	#don't append label
 	#out.append(features[0])
@@ -32,35 +36,45 @@ def getVector(features):
 			out.append(channel)
 	return out
 						
-def genSVMTrainInstance(im, bounds, windowSize=50):
+def genSVMTrainInstance(im, bounds, windowSize=10, returnAll = False):
 	data = []
 	#greyImg = ImageOps.grayscale(image)
 	sx,sy = im.size
 	mean, mode, median, stddev, edge = statistics(im)
-	data = []
-	for x in range(sx/windowSize-1):
-		x = x*windowSize
-		for y in range(sy/windowSize-1):
-			y = y*windowSize
+	dataPos = []
+	dataNeg = []
+	combined = []
+	#print sx,sy,windowSize
+	for y in range(sy/windowSize):
+		y = y*windowSize		
+		for x in range(sx/windowSize):
+			x = x*windowSize
 			label = 0
+			#print "bla"
 			for bound in bounds:
 				if inBounds(x,y,[int(wx) for wx in bound.split(" ")]):
 					label = 1
 					break;
 				else:
 					label = -1
-			if label==-1 and random.random()<0.7:
-				continue
+			#if not returnAll and (label==-1 and random.random()<0.7):
+			#	continue
 			#print x,y
 			window = im.crop((x,y,x+windowSize, y+windowSize))
+			#window.show()
 			wMean, wMode, wMedian, wStddev, wEdge = statistics(window)
+			#print wMean
 			meanDiff = [abs(a-b) for (a,b) in zip(wMean, mean)]
 			modeDiff = [abs(a-b) for (a,b) in zip(wMode, mode)]
 			medianDiff = [abs(a-b) for (a,b) in zip(wMedian, median)]
 			stdDiff = [abs(a-b) for (a,b) in zip(wStddev, stddev)]
 			#todo Edge diff
-			data.append((label,meanDiff,modeDiff,medianDiff,stdDiff,wEdge))
-	return data
+			if label==1:		
+				dataPos.append((label,meanDiff,modeDiff,medianDiff,stdDiff,wEdge))
+			else:
+				dataNeg.append((label,meanDiff,modeDiff,medianDiff,stdDiff,wEdge))
+			combined.append((label,meanDiff,modeDiff,medianDiff,stdDiff,wEdge))
+	return (dataPos, dataNeg, combined)
 	
 def inBounds(x,y, bound):
 	if (x>bound[0] and y>bound[1] and x<bound[2] and y<bound[3]):

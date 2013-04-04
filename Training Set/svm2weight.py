@@ -35,8 +35,9 @@ def get_file():
         #filename = sys.stdin.readline().strip()
     else:
         filename = sys.argv[1]
+    load_file(filename)
 
-    
+def load_file(filename):
     try:
         f = open(filename, "r")
     except IOError:
@@ -45,14 +46,10 @@ def get_file():
 
     return f
 
-
-
-
-if __name__ == "__main__":
-    f = get_file()
+def getWeights(f):
     i=0
     lines = f.readlines()
-    printOutput = True
+    printOutput = False
     w = {}
     for line in lines:
         if i>10:
@@ -78,16 +75,19 @@ if __name__ == "__main__":
                 printOutput = False
                 break
         
-        i+=1    
+        i+=1
     f.close()
 
     #if you need to sort the features by value and not by feature ID then use this line intead:
     #ws = sortbyvalue(w) 
-    
+    weights = []
     ws = sortbykey(w)
-    if printOutput == True:
-        for (i,j) in ws:
+    for (i,j) in ws:
+        if printOutput == True:
             print i,':',j
-            i+=1
+        i+=1
+        weights.append(j)
+    return weights
 
-
+if __name__ == "__main__":
+    getWeights(get_file())

@@ -3,7 +3,8 @@ from PIL import Image, ImageMath, ImageOps, ImageFilter, ImageDraw
 import sys
 import numpy as np
 import cv2
-
+import genSVMTrainData as gen
+import svm2weight
 def loadImage(fname):
     return Image.open(fname)
 
@@ -12,27 +13,27 @@ def loadTrain(fname="train.dat"):
     f=open(fname,'r')
     with f:
         for line in f:
-            print line
+            #print line
             chunks = line.split(":")
             imgName = chunks[0].strip()
             boxes = [x.strip() for x in chunks[1].split(";")]
             dat[imgName] = boxes
     return dat
 
-def test(dat, windowSize, thresh):
+def test(dat, windowSize, thresh, modelFname = "model2"):
     stat_array = []
 
     for image in dat.keys():
-        print image
+        #print image
         im = loadImage(image)
         sx,sy = im.size
-        detected = detectStains(fixSize(im), windowSize, thresh)
-        
+        detected = detectStains(fixSize(im), windowSize, thresh, modelFname)
+        #segment(image)
         #Draw rectangles on original iamge
         draw = ImageDraw.Draw(im)
         for box in dat[image]:
             coordinates = box.split(" ")
-            print [int(x) for x in coordinates]
+            #print [int(x) for x in coordinates]
             draw.rectangle([int(x) for x in coordinates], outline="red")
         im = fixSize(im)
         
@@ -57,15 +58,35 @@ def fixSize(im):
         im = im.resize((600, sy*600/sx), Image.ANTIALIAS)
     return im
 
-def detectStains(im, windowSize=50, thresh=150):
-    im = ImageOps.equalize(im)
-    im = im.filter(ImageFilter.BLUR)
+def detectStains(im, windowSize=10, thresh=150, modelFname = "model1"):
+    #im = ImageOps.equalize(im)
+    #im = im.filter(ImageFilter.BLUR)
 #    im = im.filter(ImageFilter.SMOOTH_MORE)
     #for band in im.split(): #split into each color (r,g,b,etc)
     #    detectStainsMono(band, windowSize)
     #im = fixSize(im)
-    return detectStainsMono(im,windowSize, thresh)
     #segment(fname)
+    return detectStainsMono(im,windowSize, thresh)
+    #weights = svm2weight.getWeights(svm2weight.load_file(modelFname))
+    #return detectStainsSVM(im,windowSize, weights)
+
+def detectStainsSVM(im, windowSize, weights):
+    #print weights
+    sx, sy = im.size
+    #im.show()
+    res = []
+    vis = Image.new("L", (sx/windowSize, sy/windowSize), None)
+    temp = gen.genSVMTrainInstance(im, [], windowSize, True)
+    for pt in temp[2]:
+   		feature = gen.getVector(pt)
+   		#print feature
+   		classification = sum([a*b for (a,b) in zip(weights,feature)])
+   		#if classification>0:
+	   	print "c", classification
+   		res.append((classification>0) * 255)
+    vis.putdata(res)
+    vis.show()
+    return vis
     
 def detectStainsMono(im, windowSize, thresh):
     sx, sy = im.size
@@ -135,10 +156,10 @@ def detectStainsMono(im, windowSize, thresh):
     else:
         temprange = 255/temp
     #print res
-    print "dmin",dmin
-    print "dmax",dmax
-    print "max",temprange
-    print len(res)
+    #print "dmin",dmin
+    #print "dmax",dmax
+    #print "max",temprange
+    #print len(res)
     vis.putdata(res, temprange, -dmin*(255/(-dmin+dmax)))
     
     #Draw rectangles on original iamge
@@ -209,7 +230,7 @@ def segment(fname):
     cv2.namedWindow("Image window", flags=cv2.CV_WINDOW_AUTOSIZE)
     cv2.imshow("Image window", m)
     cv2.waitKey(300)
-    raw_input("")
+    #raw_input("")
 
 def stats(dat, detected, windowSize, image, sx, sy, output):
     foo = detected.load()
@@ -237,7 +258,7 @@ def stats(dat, detected, windowSize, image, sx, sy, output):
     stat_row.append(true_positives)
     stat_row.append(false_positives)
     stat_row.append(false_negatives)
-    stat_row.append(true_positives/(true_positives + false_positives))
+    stat_row.append(true_positives/((true_positives + false_positives) or 1))
     if true_positives + false_negatives == 0:
         stat_row.append(0)
     else:
@@ -263,7 +284,7 @@ def writestats(stat_array):
     f2.close()
 
 if __name__=="__main__":
-	test(loadTrain(),20, 100)
+	test(loadTrain("train2.dat"),10, 100, "model1(.01)")
 #detectStains("how-to-get-blood-out-of-the-carpet.WidePlayer.jpg", 50)
 #detectStains("red-wine.jpg",25)
 #detectStains("stains.jpg",10)
