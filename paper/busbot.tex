@@ -17,7 +17,7 @@
 
 
 % The following packages can be found on http:\\www.ctan.org
-%\usepackage{graphics} % for pdf, bitmapped graphics files
+\usepackage{graphics} % for pdf, bitmapped graphics files
 \usepackage{epsfig} % for postscript graphics files
 %\usepackage{mathptmx} % assumes new font selection scheme installed
 %\usepackage{times} % assumes new font selection scheme installed
@@ -58,31 +58,58 @@ BusBot: A Stain Learning Approach
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
 
-In this paper, we present an approach towards learning stains from a variety of surfaces.
+In this paper we decided to investigate the application of robotics to the domestic chore of using a sponge to wipe down a table after a meal. We divided the problem into two main components; stain identification and cleaning kinematics. For the stain identification sub-problem we mainly focused on developing algorithms that would enable a robot to correctly identify stains. We first developed and experimented with a series of methods to extract features from stains in images. To increase accuracy we then use machine learning techniques to classify stained sections on images. Resulting tests of the machine learning classification of stains suggests that the utilizes thing but stuff still occurs. 
 
 \end{abstract}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{INTRODUCTION}
+\section{Motivation}
 
-STUFF ABOUT DOMESTIC ROBOTS. In this paper, we consider the challenge of enabling a robot to identify stains on a surface and clean them. Specifically, we focus on developing algorithms that enable a robot to correctly identify stains. We first develop a series of methods to extract features from stains in images. We then use machine learning techniques to classify stained sections on images.
+While domestic applications of robots have been highlighted in popular culture practically applying robotics to accurately perform household tasks remains an open and interesting problem. In this paper we investigate the application of robots to a particular household task, specifically the task of using a sponge to wipe down a table after a meal. 
+
+\section{Related Work}
+RELATED
 
 \section{Approach}
+We divided the problem into two main components; stain identification and cleaning kinematics. For the stain identification sub-problem we mainly focused on developing algorithms that would enable a robot to correctly identify stains. We first developed and experimented with a series of methods to extract features from stains in images. To increase accuracy we then use machine learning techniques to classify stained sections on images.
 
-\subsection{Feature Extraction}
+\subsection{Image Segmentation}
 
-\subsubsection{Image Segmentation}
-BLAH
+\begin{figure}
+\centering
+\epsfig{file=assets/segmentation_fail.png,width=1\columnwidth}
+\caption{Segmentation fail}
+\label{fig:segmentation_fail}
+\end{figure}
 
-\subsubsection{Average Window Approach}
+\begin{figure}
+\centering
+\includegraphics[height=2in]{assets/segment_before.jpg}
+\caption{Segmentation fail}
+\label{fig:before_segment}
+\end{figure}
+
+
+Our initial approach towards stain detection used the Watershed image segmentation algorithm. Specifically, watershed by flooding~\cite{watershed} was utilized. The segmentation process initially erodes the image to obtain seed points, which are defined as pixels whose values are close to their neighbors. The watershed algorithm is then run on the seed points to obtain a segmentation. The watershed algorithm was initially chosen because of its speed and ability to clearly segment trivial test cases. However, several disadvantages were 
+
+\subsection{Average Window Approach}
 \begin{figure}
 \centering
 \epsfig{file=assets/red-window.jpg,width=1\columnwidth}
-\caption{Comparison of seed generated objects (bottom row) and each original STL object (top row).}
-\label{fig:comparison}
+\caption{Window-based}
+\label{fig:red_window}
 \end{figure}
 FOO
+
+\begin{figure}
+\centering
+\includegraphics[height=3in]{assets/pattern_window_vs_svm.png}
+% \epsfig{file=assets/pattern_window_vs_svm.png,width=1\columnwidth}
+\caption{Comparison of window feature detection (left) and SVM detection (right)}
+\label{fig:pattern_comparison}
+\end{figure}
+
 
 \subsection{Learning Features}
 SVM features were 
@@ -90,16 +117,20 @@ SVM features were
 \section{Results and Discussion}
 For machine learning 
 
-\begin{figure}
+\begin{figure*}[t]
 \centering
-\epsfig{file=assets/wine_window_vs_svm.png,width=1\columnwidth}
+\epsfig{file=assets/coffee_window_vs_svm.png,width=2\columnwidth}
 \caption{Comparison of window feature detection (left) and SVM detection (right)}
-\label{fig:comparison}
-\end{figure}
+\label{fig:coffee_comparison}
+\end{figure*}
 
 \subsection{Contrast}
-
-\subsection{Abbreviations and Acronyms} Define abbreviations and acronyms the first time they are used in the text, even after they have been defined in the abstract. Abbreviations such as IEEE, SI, MKS, CGS, sc, dc, and rms do not have to be defined. Do not use abbreviations in the title or heads unless they are unavoidable.
+\begin{figure}
+\centering
+\epsfig{file=assets/contrast_fail.jpg,width=1\columnwidth}
+\caption{Window-based}
+\label{fig:contrast_fail}
+\end{figure}
 
 \section{CONCLUSIONS}
 
@@ -137,9 +168,13 @@ References are important to the reader; therefore, each citation must be complet
 
 
 
-% \begin{thebibliography}{99}
+\begin{thebibliography}{99}
 
-% \bibitem{c1} G. O. Young, ÒSynthetic structure of industrial plastics (Book style with paper title and editor),Ó 	in Plastics, 2nd ed. vol. 3, J. Peters, Ed.  New York: McGraw-Hill, 1964, pp. 15Ð64.
+\bibitem{watershed} Serge Beucher and Christian Lantuéjoul. Use of Watersheds in Contour Detection. In International workshop on image processing, real-time edge and motion detection (1979).
+
+\bibitem{watershed_stackoverflow} Abid, K. (2012, July 11). stackoverflow Retrieved from http://stackoverflow.com/questions/11294859/how-to-define-the-markers-for-watershed-in-opencv/11438165
+
+
 % \bibitem{c2} W.-K. Chen, Linear Networks and Systems (Book style).	Belmont, CA: Wadsworth, 1993, pp. 123Ð135.
 % \bibitem{c3} H. Poor, An Introduction to Signal Detection and Estimation.   New York: Springer-Verlag, 1985, ch. 4.
 % \bibitem{c4} B. Smith, ÒAn approach to graphs of linear forms (Unpublished work style),Ó unpublished.
@@ -160,12 +195,7 @@ References are important to the reader; therefore, each citation must be complet
 % \bibitem{c19} N. Kawasaki, ÒParametric study of thermal and chemical nonequilibrium nozzle flow,Ó M.S. thesis, Dept. Electron. Eng., Osaka Univ., Osaka, Japan, 1993.
 % \bibitem{c20} J. P. Wilkinson, ÒNonlinear resonant circuit devices (Patent style),Ó U.S. Patent 3 624 12, July 16, 1990. 
 
-
-
-
-
-
-% \end{thebibliography}
+\end{thebibliography}
 
 
 

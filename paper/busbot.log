@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  5 APR 2013 00:51
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  5 APR 2013 04:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -109,16 +109,6 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
 )
 ** ATTENTION: Overriding command lockouts (line 10).
 ** ATTENTION: Overriding IEEE standard margins (line 13).
-(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/epsfig.sty
-Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
-
-(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-
-(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
-\KV@toks@=\toks15
-)
 (/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
@@ -141,17 +131,23 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count91
 ))
+(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/epsfig.sty
+Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks15
+)
 \Gin@req@height=\dimen113
 \Gin@req@width=\dimen114
 )
 \epsfxsize=\dimen115
 \epsfysize=\dimen116
 )
-(./busbot.aux
-
-LaTeX Warning: Label `fig:comparison' multiply defined.
-
-)
+(./busbot.aux)
 \openout1 = `busbot.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 49.
@@ -166,7 +162,8 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 49.
 LaTeX Font Info:    ... okay on input line 49.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 49.
 LaTeX Font Info:    ... okay on input line 49.
- (/usr/local/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii
+
+(/usr/local/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count92
 \scratchdimen=\dimen117
@@ -227,19 +224,53 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-<assets/red-window.jpg, id=1, 301.125pt x 250.9375pt>
+<assets/segmentation_fail.png, id=1, 763.85374pt x 478.78876pt>
+File: assets/segmentation_fail.png Graphic file (type png)
+
+<use assets/segmentation_fail.png>
+Package pdftex.def Info: assets/segmentation_fail.png used on input line 81.
+(pdftex.def)             Requested size: 245.71811pt x 154.01915pt.
+
+<assets/segment_before.jpg, id=2, 1682.285pt x 2601.72pt>
+File: assets/segment_before.jpg Graphic file (type jpg)
+
+<use assets/segment_before.jpg>
+Package pdftex.def Info: assets/segment_before.jpg used on input line 88.
+(pdftex.def)             Requested size: 93.43723pt x 144.54pt.
+
+<assets/red-window.jpg, id=3, 301.125pt x 250.9375pt>
 File: assets/red-window.jpg Graphic file (type jpg)
 
 <use assets/red-window.jpg>
-Package pdftex.def Info: assets/red-window.jpg used on input line 81.
+Package pdftex.def Info: assets/red-window.jpg used on input line 101.
 (pdftex.def)             Requested size: 245.71811pt x 204.77454pt.
 
-<assets/wine_window_vs_svm.png, id=2, 487.8225pt x 207.77625pt>
-File: assets/wine_window_vs_svm.png Graphic file (type png)
+<assets/pattern_window_vs_svm.png, id=4, 552.0625pt x 827.09pt>
+File: assets/pattern_window_vs_svm.png Graphic file (type png)
 
-<use assets/wine_window_vs_svm.png>
-Package pdftex.def Info: assets/wine_window_vs_svm.png used on input line 95.
-(pdftex.def)             Requested size: 245.71811pt x 104.65826pt.
+<use assets/pattern_window_vs_svm.png>
+Package pdftex.def Info: assets/pattern_window_vs_svm.png used on input line 10
+9.
+(pdftex.def)             Requested size: 144.71219pt x 216.81pt.
+ [1{/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+
+ <./assets/segmentation_fail.png> <./assets/segment_before.jpg> <./assets/red-w
+indow.jpg>]
+<assets/coffee_window_vs_svm.png, id=14, 1204.5pt x 401.5pt>
+File: assets/coffee_window_vs_svm.png Graphic file (type png)
+
+<use assets/coffee_window_vs_svm.png>
+Package pdftex.def Info: assets/coffee_window_vs_svm.png used on input line 124
+.
+(pdftex.def)             Requested size: 491.43622pt x 163.81349pt.
+
+<assets/contrast_fail.jpg, id=15, 602.25pt x 602.25pt>
+File: assets/contrast_fail.jpg Graphic file (type jpg)
+
+<use assets/contrast_fail.jpg>
+Package pdftex.def Info: assets/contrast_fail.jpg used on input line 132.
+(pdftex.def)             Requested size: 245.71811pt x 245.72026pt.
 Missing character: There is no Ò in font ptmr7t!
 Missing character: There is no Ó in font ptmr7t!
 Missing character: There is no Ò in font ptmr7t!
@@ -250,6 +281,16 @@ Missing character: There is no Ò in font ptmr7t!
 Missing character: There is no Ó in font ptmr7t!
 Missing character: There is no Ò in font ptmr7t!
 Missing character: There is no Ó in font ptmr7t!
+Missing character: There is no é in font ptmr7t!
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--178
+[]\OT1/ptm/m/n/8 Abid, K. (2012, July 11). stack-over-flow Re-trieved from
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--178
+\OT1/ptm/m/n/8 http://stackoverflow.com/questions/11294859/how-to-define-the-
+ []
 
 
 ** Conference Paper **
@@ -262,35 +303,25 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the US letter (8.5in X 11in) paper size.
 
-
-Overfull \vbox (336.63313pt too high) has occurred while \output is active []
-
-
-[1{/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
-
-
- <./assets/red-window.jpg> <./assets/wine_window_vs_svm.png>] (./busbot.aux)
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+[2 <./assets/pattern_window_vs_svm.png> <./assets/contrast_fail.jpg>] [3 <./ass
+ets/coffee_window_vs_svm.png>] (./busbot.aux) ) 
 Here is how much of TeX's memory you used:
- 2088 strings out of 493488
- 32773 string characters out of 3141326
- 89626 words of memory out of 3000000
- 5397 multiletter control sequences out of 15000+200000
+ 2115 strings out of 493488
+ 33521 string characters out of 3141326
+ 91175 words of memory out of 3000000
+ 5420 multiletter control sequences out of 15000+200000
  33036 words of font info for 62 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 37i,8n,23p,408b,281s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2012/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/201
-2/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2012/texmf-d
-ist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/
-type1/urw/times/utmri8a.pfb>
-Output written on busbot.pdf (1 page, 161867 bytes).
+ 37i,8n,23p,718b,281s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/local/texlive/2012/texmf-d
+ist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2012/texmf-dist/fonts/type1
+/urw/times/utmb8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/times
+/utmbi8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/times/utmr8a.p
+fb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on busbot.pdf (3 pages, 3081483 bytes).
 PDF statistics:
- 27 PDF objects out of 1000 (max. 8388607)
- 17 compressed objects within 1 object stream
+ 37 PDF objects out of 1000 (max. 8388607)
+ 21 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

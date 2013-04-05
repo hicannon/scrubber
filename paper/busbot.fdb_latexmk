@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1365137498 "busbot.tex" "busbot.pdf" "busbot" 1365137499
+["pdflatex"] 1365150302 "busbot.tex" "busbot.pdf" "busbot" 1365150303
   "/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2012/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2012/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1136768653 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -45,10 +45,14 @@
   "/usr/local/texlive/2012/texmf-var/web2c/pdftex/pdflatex.fmt" 1341108725 3691572 80746d7cec090b0770bc87079bef471d ""
   "/usr/local/texlive/2012/texmf.cnf" 1341108668 572 7ea7194897937febeb63145e1c3a1f03 ""
   "/usr/local/texlive/2012/texmf/web2c/texmf.cnf" 1336865692 31299 729e216d9b945005c0d4b079c0500bc9 ""
-  "assets/red-window.jpg" 1365137018 6680 d57d9625626be62caf098f09b8b9e462 ""
-  "assets/wine_window_vs_svm.png" 1365137387 81305 1e4a5e6de1f73234aec05e901e30a32b ""
-  "busbot.aux" 1365137499 1243 90e9bcd0c580d6afd82ef9a1628e6cc9 ""
-  "busbot.tex" 1365137497 8989 6edc2ce9f7926305b4305eafbba05cae ""
+  "assets/coffee_window_vs_svm.png" 1365138508 590913 37881aaaefaa3cbf171e81f2a205e5f1 ""
+  "assets/contrast_fail.jpg" 1365137018 65932 79ae642eb17ef5325388f9023bc58839 ""
+  "assets/pattern_window_vs_svm.png" 1365140529 764377 b0aef008831d3f9b1dac357808d32f82 ""
+  "assets/red-window.jpg" 1365138143 6680 d57d9625626be62caf098f09b8b9e462 ""
+  "assets/segment_before.jpg" 1364844219 1102300 ea5f035182dbeaf7003fe388ba0279fb ""
+  "assets/segmentation_fail.png" 1365139888 111633 37501c00ac0dcf07c7a0509104e54829 ""
+  "busbot.aux" 1365150303 1759 579b8a515f3859960ca76fe1cb34c608 ""
+  "busbot.tex" 1365150300 11070 37d2f41d588002bf649ee0bc3bd01067 ""
   "ieeeconf.cls" 1365075534 197438 30172a4dc9646cb3c0d89a097bdf6780 ""
   (generated)
   "busbot.aux"
