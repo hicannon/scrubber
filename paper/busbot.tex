@@ -65,16 +65,43 @@ In this paper we decided to investigate the application of robotics to the domes
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Motivation}
-
 While domestic applications of robots have been highlighted in popular culture practically applying robotics to accurately perform household tasks remains an open and interesting problem. In this paper we investigate the application of robots to a particular household task, specifically the task of using a sponge to wipe down a table after a meal. 
 
 \section{Related Work}
 RELATED
 
 \section{Approach}
-We divided the problem into two main components; stain identification and cleaning kinematics. For the stain identification sub-problem we mainly focused on developing algorithms that would enable a robot to correctly identify stains. We first developed and experimented with a series of methods to extract features from stains in images. To increase accuracy we then use machine learning techniques to classify stained sections on images.
+We divided the problem into two main components; stain identification and cleaning kinematics. For the stain identification sub-problem we mainly focused on developing algorithms that would enable a robot to correctly identify stains. First, we clearly established our definition of a ``stain'' as a discoloration produced by foreign matter having penetrated into or chemically reacted with a material. The most important property of these stains is the discoloration of the stained area from the background texture color. 
 
 \subsection{Image Segmentation}
+Our initial approach towards stain detection used the Watershed image segmentation algorithm. Specifically, watershed by flooding~\cite{watershed} was utilized. The segmentation process initially erodes the image to obtain seed points, which are defined as pixels whose values are close to their neighbors. The watershed algorithm is then run on the seed points to obtain a segmentation. The watershed algorithm was initially chosen because of its speed and ability to clearly segment trivial test cases. 
+
+\subsection{Average Window Approach}
+One of the most important reasons why Watershed segmentation was abandoned was due to the algorithm's inability to ignore background textures. As a result an alternative method was created. The new method segments the image into square windows and compares each window with the average window value. Windows with a value difference greater than a threshold are classified as a stain.
+
+\begin{figure}
+\centering
+\epsfig{file=assets/red-window.jpg,width=1\columnwidth}
+\caption{Window-based}
+\label{fig:red_window}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[height=3in]{assets/pattern_window_vs_svm.png}
+% \epsfig{file=assets/pattern_window_vs_svm.png,width=1\columnwidth}
+\caption{Comparison of window feature detection (left) and SVM detection (right)}
+\label{fig:pattern_comparison}
+\end{figure}
+
+\subsection{Learning Features}
+SVM features were determined on a per channel basis for all three color channels. For each channel the difference between the window and average, mean and mode value were used as features. In addition the variation of values within the window as well as the edginess of the window were also used as features. The variation of values was used because stains might be monocolored as compared to the background texture pattern, due to the properties of the stain substance.
+
+\section{Results and Discussion}
+
+
+\subsection{Segmentation}
+Several disadvantages were discovered through experimentation with the Watershed segmentation. It was difficult to determine which segmented portion of the mask was a stain. The watershed segmentation approach was unable to handle patterned backgrounds or textures such as wood, as figures~\ref{fig:segmentation_fail} and~\ref{fig:before_segment} demonstrate. In addition it is hard to modify and improve the the algorithm besides through pre and post processing.
 
 \begin{figure}
 \centering
@@ -90,32 +117,8 @@ We divided the problem into two main components; stain identification and cleani
 \label{fig:before_segment}
 \end{figure}
 
-
-Our initial approach towards stain detection used the Watershed image segmentation algorithm. Specifically, watershed by flooding~\cite{watershed} was utilized. The segmentation process initially erodes the image to obtain seed points, which are defined as pixels whose values are close to their neighbors. The watershed algorithm is then run on the seed points to obtain a segmentation. The watershed algorithm was initially chosen because of its speed and ability to clearly segment trivial test cases. However, several disadvantages were 
-
-\subsection{Average Window Approach}
-\begin{figure}
-\centering
-\epsfig{file=assets/red-window.jpg,width=1\columnwidth}
-\caption{Window-based}
-\label{fig:red_window}
-\end{figure}
-FOO
-
-\begin{figure}
-\centering
-\includegraphics[height=3in]{assets/pattern_window_vs_svm.png}
-% \epsfig{file=assets/pattern_window_vs_svm.png,width=1\columnwidth}
-\caption{Comparison of window feature detection (left) and SVM detection (right)}
-\label{fig:pattern_comparison}
-\end{figure}
-
-
-\subsection{Learning Features}
-SVM features were 
-
-\section{Results and Discussion}
-For machine learning 
+\subsection{Dataset}
+The dataset used contains about 70 images, which together contain roughly 70,000 training examples. The distribution of positive and negative examples is roughly evenly split as well. The window size is 10x10 for the examples used in this paper.
 
 \begin{figure*}[t]
 \centering
@@ -124,7 +127,9 @@ For machine learning
 \label{fig:coffee_comparison}
 \end{figure*}
 
-\subsection{Contrast}
+\subsection{Future Work}
+Through 
+
 \begin{figure}
 \centering
 \epsfig{file=assets/contrast_fail.jpg,width=1\columnwidth}

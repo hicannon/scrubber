@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  5 APR 2013 04:25
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  5 APR 2013 05:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -224,44 +224,43 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-<assets/segmentation_fail.png, id=1, 763.85374pt x 478.78876pt>
-File: assets/segmentation_fail.png Graphic file (type png)
-
-<use assets/segmentation_fail.png>
-Package pdftex.def Info: assets/segmentation_fail.png used on input line 81.
-(pdftex.def)             Requested size: 245.71811pt x 154.01915pt.
-
-<assets/segment_before.jpg, id=2, 1682.285pt x 2601.72pt>
-File: assets/segment_before.jpg Graphic file (type jpg)
-
-<use assets/segment_before.jpg>
-Package pdftex.def Info: assets/segment_before.jpg used on input line 88.
-(pdftex.def)             Requested size: 93.43723pt x 144.54pt.
-
-<assets/red-window.jpg, id=3, 301.125pt x 250.9375pt>
+<assets/red-window.jpg, id=1, 301.125pt x 250.9375pt>
 File: assets/red-window.jpg Graphic file (type jpg)
 
 <use assets/red-window.jpg>
-Package pdftex.def Info: assets/red-window.jpg used on input line 101.
+Package pdftex.def Info: assets/red-window.jpg used on input line 84.
 (pdftex.def)             Requested size: 245.71811pt x 204.77454pt.
 
-<assets/pattern_window_vs_svm.png, id=4, 552.0625pt x 827.09pt>
+<assets/pattern_window_vs_svm.png, id=2, 552.0625pt x 827.09pt>
 File: assets/pattern_window_vs_svm.png Graphic file (type png)
 
 <use assets/pattern_window_vs_svm.png>
-Package pdftex.def Info: assets/pattern_window_vs_svm.png used on input line 10
-9.
+Package pdftex.def Info: assets/pattern_window_vs_svm.png used on input line 91
+.
 (pdftex.def)             Requested size: 144.71219pt x 216.81pt.
+
+<assets/segmentation_fail.png, id=3, 763.85374pt x 478.78876pt>
+File: assets/segmentation_fail.png Graphic file (type png)
+
+<use assets/segmentation_fail.png>
+Package pdftex.def Info: assets/segmentation_fail.png used on input line 108.
+(pdftex.def)             Requested size: 245.71811pt x 154.01915pt.
+
+<assets/segment_before.jpg, id=4, 1682.285pt x 2601.72pt>
+File: assets/segment_before.jpg Graphic file (type jpg)
+
+<use assets/segment_before.jpg>
+Package pdftex.def Info: assets/segment_before.jpg used on input line 115.
+(pdftex.def)             Requested size: 93.43723pt x 144.54pt.
  [1{/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
- <./assets/segmentation_fail.png> <./assets/segment_before.jpg> <./assets/red-w
-indow.jpg>]
+ <./assets/red-window.jpg>]
 <assets/coffee_window_vs_svm.png, id=14, 1204.5pt x 401.5pt>
 File: assets/coffee_window_vs_svm.png Graphic file (type png)
 
 <use assets/coffee_window_vs_svm.png>
-Package pdftex.def Info: assets/coffee_window_vs_svm.png used on input line 124
+Package pdftex.def Info: assets/coffee_window_vs_svm.png used on input line 125
 .
 (pdftex.def)             Requested size: 491.43622pt x 163.81349pt.
 
@@ -269,7 +268,7 @@ Package pdftex.def Info: assets/coffee_window_vs_svm.png used on input line 124
 File: assets/contrast_fail.jpg Graphic file (type jpg)
 
 <use assets/contrast_fail.jpg>
-Package pdftex.def Info: assets/contrast_fail.jpg used on input line 132.
+Package pdftex.def Info: assets/contrast_fail.jpg used on input line 135.
 (pdftex.def)             Requested size: 245.71811pt x 245.72026pt.
 Missing character: There is no Ò in font ptmr7t!
 Missing character: There is no Ó in font ptmr7t!
@@ -283,12 +282,12 @@ Missing character: There is no Ò in font ptmr7t!
 Missing character: There is no Ó in font ptmr7t!
 Missing character: There is no é in font ptmr7t!
 
-Underfull \hbox (badness 10000) in paragraph at lines 177--178
+Underfull \hbox (badness 10000) in paragraph at lines 180--181
 []\OT1/ptm/m/n/8 Abid, K. (2012, July 11). stack-over-flow Re-trieved from
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 177--178
+Underfull \hbox (badness 10000) in paragraph at lines 180--181
 \OT1/ptm/m/n/8 http://stackoverflow.com/questions/11294859/how-to-define-the-
  []
 
@@ -303,22 +302,23 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the US letter (8.5in X 11in) paper size.
 
-[2 <./assets/pattern_window_vs_svm.png> <./assets/contrast_fail.jpg>] [3 <./ass
-ets/coffee_window_vs_svm.png>] (./busbot.aux) ) 
+[2 <./assets/pattern_window_vs_svm.png> <./assets/segmentation_fail.png> <./ass
+ets/segment_before.jpg> <./assets/contrast_fail.jpg>] [3 <./assets/coffee_windo
+w_vs_svm.png>] (./busbot.aux) ) 
 Here is how much of TeX's memory you used:
  2115 strings out of 493488
  33521 string characters out of 3141326
- 91175 words of memory out of 3000000
+ 94175 words of memory out of 3000000
  5420 multiletter control sequences out of 15000+200000
  33036 words of font info for 62 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  37i,8n,23p,718b,281s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/local/texlive/2012/texmf-d
-ist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2012/texmf-dist/fonts/type1
-/urw/times/utmb8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/times
-/utmbi8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/times/utmr8a.p
-fb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on busbot.pdf (3 pages, 3081483 bytes).
+{/usr/local/texlive/2012/texmf-dist/fonts/enc/dv
+ips/base/8r.enc}</usr/local/texlive/2012/texmf-dist/fonts/type1/urw/times/utmb8
+a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></u
+sr/local/texlive/2012/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/t
+exlive/2012/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on busbot.pdf (3 pages, 3083411 bytes).
 PDF statistics:
  37 PDF objects out of 1000 (max. 8388607)
  21 compressed objects within 1 object stream
