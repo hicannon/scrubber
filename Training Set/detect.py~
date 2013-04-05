@@ -47,7 +47,7 @@ def test(dat, windowSize, thresh, modelFname = "model2"):
                     draw.rectangle(getBoxFromPoint(windowSize,x,y))
         stats(dat,detected,windowSize,image,sx,sy,stat_array)                    
         im.show()
-        im.save(image+"marked-Window.jpg", "JPEG")
+        #im.save(image+"marked-SVM.jpg", "JPEG")
     writestats(stat_array)
     
 def fixSize(im):
@@ -67,9 +67,9 @@ def detectStains(im, windowSize=10, thresh=150, modelFname = "model1"):
     #    detectStainsMono(band, windowSize)
     #im = fixSize(im)
     #segment(fname)
-    #return detectStainsMono(im,windowSize, thresh)
-    weights = svm2weight.getWeights(svm2weight.load_file(modelFname))
-    return detectStainsSVM(im,windowSize, weights)
+    return detectStainsMono(im,windowSize, thresh)
+    #weights = svm2weight.getWeights(svm2weight.load_file(modelFname))
+    #return detectStainsSVM(im,windowSize, weights)
 
 def detectStainsSVM(im, windowSize, weights):
     #print weights
@@ -285,7 +285,7 @@ def writestats(stat_array):
     f2.close()
 
 if __name__=="__main__":
-	test(loadTrain("train3.dat"),10, 100, "model2(.0001)")
+	test(loadTrain("trainAll.dat"),20, 100, "model2(.0001)")
 #detectStains("how-to-get-blood-out-of-the-carpet.WidePlayer.jpg", 50)
 #detectStains("red-wine.jpg",25)
 #detectStains("stains.jpg",10)
