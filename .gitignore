@@ -17,3 +17,7 @@ build/
 bin/
 
 .DS_Store
+
+*.pdf
+
+*.log

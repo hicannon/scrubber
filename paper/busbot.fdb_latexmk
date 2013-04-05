@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1365159129 "busbot.tex" "busbot.pdf" "busbot" 1365159130
+["pdflatex"] 1365161772 "busbot.tex" "busbot.pdf" "busbot" 1365161773
   "/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2012/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2012/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1136768653 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -57,8 +57,8 @@
   "assets/red-window.jpg" 1365138143 6680 d57d9625626be62caf098f09b8b9e462 ""
   "assets/segment_before.jpg" 1364844219 1102300 ea5f035182dbeaf7003fe388ba0279fb ""
   "assets/segmentation_fail.png" 1365139888 111633 37501c00ac0dcf07c7a0509104e54829 ""
-  "busbot.aux" 1365159130 2508 6bfa966433b0231dd31d1e0af2fec177 ""
-  "busbot.tex" 1365159128 16149 068030585aa2e4c155f8d6cea7d71aa3 ""
+  "busbot.aux" 1365161773 2552 d64ff8321d5ca75101241daba8348dce ""
+  "busbot.tex" 1365161770 18581 9cbe4cc1350d5e7cafe6d217adca29d6 ""
   "ieeeconf.cls" 1365075534 197438 30172a4dc9646cb3c0d89a097bdf6780 ""
   (generated)
   "busbot.aux"

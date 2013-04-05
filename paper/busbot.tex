@@ -121,21 +121,20 @@ Window Size & Average Precision & Average Recall \\
 
 \begin{figure}[!ht]
 \centering
-\epsfig{file=assets/red-window.jpg,width=1\columnwidth}
+\includegraphics[height=2in]{assets/red-window.jpg}
+% \epsfig{file=assets/red-window.jpg,width=1\columnwidth}
 \caption{Window-based}
 \label{fig:red_window}
 \end{figure}
 
 \subsection{Learning}
-The SVM implementation used in this paper was SVMlight and the window size is 10x10 for the examples used in this paper. Table~\ref{table:train1_test2} displays the result statistics of training on.
+The SVM implementation used in this paper was SVMlight~\cite{svm_light} and the window size is 10x10 for the examples used in this paper. Table~\ref{table:train1_test2} displays the result statistics of training on a sub-dataset labeled as ``dataset 1'' and testing on a sub-dataset labeled as ``dataset 2''. Table~\ref{table:train2_test1} displays the result statistics of the reciprocal training/testing relationship. It is worth noting that the overall performance is higher in table~\ref{table:train2_test1} for multiple reasons. Dataset 1 is the first set of test images obtained and manually classified. The dataset contains images with slight contrast issues which results in the SVM misclassifying darker regions of pictures. The issue of contrast is further discussed later in this paper. Another reason for the poorer performance when training on dataset 1 results from misrepresentation of stains due to poor manual classification. Because most stains are not square in shape attempting to classify curved stains using square bounding boxes will inevitably result in areas misclassified as stains. As a result many pictures in the ``dataset 1'' contain misclassified examples and this source of error was noted before ``dataset 2'' was classified. The bounding boxes in ``dataset 2'' are drawn much closer to the shape of the stain in order to reduce error and the results show a definite reduction.
 
-First test set had bad examples (overexposure, misrepresentation).
-
-Figure 
+Qualitative comparisons between the SVM detected and window detected regions also highlight the improved performance brought on by machine learning. Figure~\ref{fig:coffee_comparison} shows the results of window-based detection on the left and the results of learning on the right. It is worth noting that not only does the learning approach label much more of the stain, it also correctly identifies sections of the stain that were not classified initially. Figure~\ref{fig:pattern_comparison} best highlights the advantages of the learning approach. In the top image the window-based detector incorrectly identified the background pattern as a series of stains. In the bottom image the SVM correctly labels the stained region while not misclassifying the background pattern.
 
 There is a tradeoff between recall and precision by selecting k values.
 
-
+Contrast.
 
 \begin{table}
 \begin{center} \begin{tabular}[h]{l|l|l|l}
@@ -179,6 +178,13 @@ k & Accuracy & Precision & Recall \\
 \label{fig:coffee_comparison}
 \end{figure*}
 
+\begin{figure}
+\centering
+\includegraphics[height=3in]{assets/pattern_window_vs_svm.png}
+% \epsfig{file=assets/pattern_window_vs_svm.png,width=1\columnwidth}
+\caption{Comparison of window feature detection (left) and SVM detection (right)}
+\label{fig:pattern_comparison}
+\end{figure}
 
 
 \begin{figure}
@@ -188,20 +194,10 @@ k & Accuracy & Precision & Recall \\
 \label{fig:contrast_fail}
 \end{figure}
 
-\begin{figure}
-\centering
-\includegraphics[height=1in]{assets/pattern_window_vs_svm.png}
-% \epsfig{file=assets/pattern_window_vs_svm.png,width=1\columnwidth}
-\caption{Comparison of window feature detection (left) and SVM detection (right)}
-\label{fig:pattern_comparison}
-\end{figure}
-
 \subsection{Future Work}
-Through 
+While the learning approach towards stain detection has proven to be more effective than segmentation and window comparison-based solutions the process could benefit from additional image preprocessing to reduce error.
 
-\section{CONCLUSIONS}
-
-A conclusion section is not required. Although a conclusion may review the main points of the paper, do not replicate the abstract as the conclusion. A conclusion might elaborate on the importance of the work or suggest applications and extensions. 
+Also we need to program the ROBOT.
 
 \addtolength{\textheight}{-12cm}   % This command serves to balance the column lengths
                                   % on the last page of the document manually. It shortens
@@ -242,6 +238,8 @@ References are important to the reader; therefore, each citation must be complet
 \bibitem{watershed_stackoverflow} Abid, K. (2012, July 11). stackoverflow Retrieved from http://stackoverflow.com/questions/11294859/how-to-define-the-markers-for-watershed-in-opencv/11438165
 
 \bibitem{dirty_egg} Mertens, K. (2005). Dirt detection on brown eggs by means of color computer vision. Manuscript submitted for publication, Egg Quality and Incubation Research Group, , Available from US National Library of Medicine. (16335136)Retrieved from http://www.ncbi.nlm.nih.gov/pubmed/16335136 
+
+\bibitem{svm_light} T. Joachims, Making large-Scale SVM Learning Practical. Advances in Kernel Methods - Support Vector Learning, B. Schölkopf and C. Burges and A. Smola (ed.), MIT-Press, 1999.
 
 
 % \bibitem{c2} W.-K. Chen, Linear Networks and Systems (Book style).	Belmont, CA: Wadsworth, 1993, pp. 123Ð135.

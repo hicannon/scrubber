@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.1.28)  5 APR 2013 06:56
+=======
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  5 APR 2013 07:36
+>>>>>>> Stashed changes
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -241,30 +245,35 @@ File: assets/red-window.jpg Graphic file (type jpg)
 
 <use assets/red-window.jpg>
 Package pdftex.def Info: assets/red-window.jpg used on input line 124.
-(pdftex.def)             Requested size: 245.71811pt x 204.77454pt.
+(pdftex.def)             Requested size: 173.45796pt x 144.54pt.
 
 <assets/coffee_window_vs_svm.png, id=13, 1204.5pt x 401.5pt>
 File: assets/coffee_window_vs_svm.png Graphic file (type png)
 
 <use assets/coffee_window_vs_svm.png>
-Package pdftex.def Info: assets/coffee_window_vs_svm.png used on input line 177
+Package pdftex.def Info: assets/coffee_window_vs_svm.png used on input line 176
 .
 (pdftex.def)             Requested size: 491.43622pt x 163.81349pt.
 
-<assets/contrast_fail.jpg, id=14, 602.25pt x 602.25pt>
-File: assets/contrast_fail.jpg Graphic file (type jpg)
-
-<use assets/contrast_fail.jpg>
-Package pdftex.def Info: assets/contrast_fail.jpg used on input line 186.
-(pdftex.def)             Requested size: 245.71811pt x 245.72026pt.
-
-<assets/pattern_window_vs_svm.png, id=15, 552.0625pt x 827.09pt>
+<assets/pattern_window_vs_svm.png, id=14, 552.0625pt x 827.09pt>
 File: assets/pattern_window_vs_svm.png Graphic file (type png)
 
 <use assets/pattern_window_vs_svm.png>
-Package pdftex.def Info: assets/pattern_window_vs_svm.png used on input line 19
+Package pdftex.def Info: assets/pattern_window_vs_svm.png used on input line 18
 3.
-(pdftex.def)             Requested size: 48.23459pt x 72.26999pt.
+(pdftex.def)             Requested size: 144.71219pt x 216.81pt.
+
+<assets/contrast_fail.jpg, id=15, 602.25pt x 602.25pt>
+File: assets/contrast_fail.jpg Graphic file (type jpg)
+
+<use assets/contrast_fail.jpg>
+Package pdftex.def Info: assets/contrast_fail.jpg used on input line 192.
+(pdftex.def)             Requested size: 245.71811pt x 245.72026pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [2 <./assets/segmentation_fail.png> <./assets/segment_before.jpg> <./assets/re
+d-window.jpg>]
 Missing character: There is no Ò in font ptmr7t!
 Missing character: There is no Ó in font ptmr7t!
 Missing character: There is no Ò in font ptmr7t!
@@ -275,10 +284,19 @@ Missing character: There is no Ò in font ptmr7t!
 Missing character: There is no Ó in font ptmr7t!
 Missing character: There is no Ò in font ptmr7t!
 Missing character: There is no Ó in font ptmr7t!
+<<<<<<< Updated upstream
  [2 </media/DOCUMENTS/Dropbox/CS4758/rosws/scrubber/paper/assets/segmentation_f
 ail.png> </media/DOCUMENTS/Dropbox/CS4758/rosws/scrubber/paper/assets/segment_b
 efore.jpg> </media/DOCUMENTS/Dropbox/CS4758/rosws/scrubber/paper/assets/red-win
 dow.jpg>]
+=======
+
+Overfull \vbox (336.63313pt too high) has occurred while \output is active []
+
+
+[3 <./assets/coffee_window_vs_svm.png> <./assets/pattern_window_vs_svm.png> <./
+assets/contrast_fail.jpg>]
+>>>>>>> Stashed changes
 Missing character: There is no é in font ptmr7t!
 
 Underfull \hbox (badness 10000) in paragraph at lines 242--243
@@ -307,6 +325,7 @@ Underfull \hbox (badness 1521) in paragraph at lines 244--245
 le
  []
 
+Missing character: There is no ö in font ptmr7t!
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -318,6 +337,7 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the US letter (8.5in X 11in) paper size.
 
+<<<<<<< Updated upstream
 [3 </media/DOCUMENTS/Dropbox/CS4758/rosws/scrubber/paper/assets/coffee_window_v
 s_svm.png>] [4 </media/DOCUMENTS/Dropbox/CS4758/rosws/scrubber/paper/assets/con
 trast_fail.jpg> </media/DOCUMENTS/Dropbox/CS4758/rosws/scrubber/paper/assets/pa
@@ -337,6 +357,25 @@ onts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
 times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
 Output written on busbot.pdf (4 pages, 3086499 bytes).
+=======
+[4
+
+] (./busbot.aux) ) 
+Here is how much of TeX's memory you used:
+ 2138 strings out of 493488
+ 33781 string characters out of 3141326
+ 99208 words of memory out of 3000000
+ 5436 multiletter control sequences out of 15000+200000
+ 36583 words of font info for 70 fonts, out of 3000000 for 9000
+ 957 hyphenation exceptions out of 8191
+ 37i,8n,23p,1444b,281s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/base/8r.e
+nc}</usr/local/texlive/2012/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/l
+ocal/texlive/2012/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texl
+ive/2012/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2012/t
+exmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on busbot.pdf (4 pages, 3088467 bytes).
+>>>>>>> Stashed changes
 PDF statistics:
  40 PDF objects out of 1000 (max. 8388607)
  23 compressed objects within 1 object stream

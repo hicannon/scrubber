@@ -129,12 +129,12 @@ INPUT ./assets/red-window.jpg
 INPUT assets/coffee_window_vs_svm.png
 INPUT ./assets/coffee_window_vs_svm.png
 INPUT ./assets/coffee_window_vs_svm.png
-INPUT assets/contrast_fail.jpg
-INPUT ./assets/contrast_fail.jpg
-INPUT ./assets/contrast_fail.jpg
 INPUT assets/pattern_window_vs_svm.png
 INPUT ./assets/pattern_window_vs_svm.png
 INPUT ./assets/pattern_window_vs_svm.png
+INPUT assets/contrast_fail.jpg
+INPUT ./assets/contrast_fail.jpg
+INPUT ./assets/contrast_fail.jpg
 INPUT /usr/local/texlive/2012/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
 INPUT /usr/local/texlive/2012/texmf-dist/fonts/vf/adobe/times/ptmrc7t.vf
 INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
