@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  5 APR 2013 05:37
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  5 APR 2013 06:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -224,52 +224,59 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-<assets/red-window.jpg, id=1, 301.125pt x 250.9375pt>
-File: assets/red-window.jpg Graphic file (type jpg)
-
-<use assets/red-window.jpg>
-Package pdftex.def Info: assets/red-window.jpg used on input line 84.
-(pdftex.def)             Requested size: 245.71811pt x 204.77454pt.
-
-<assets/pattern_window_vs_svm.png, id=2, 552.0625pt x 827.09pt>
-File: assets/pattern_window_vs_svm.png Graphic file (type png)
-
-<use assets/pattern_window_vs_svm.png>
-Package pdftex.def Info: assets/pattern_window_vs_svm.png used on input line 91
-.
-(pdftex.def)             Requested size: 144.71219pt x 216.81pt.
-
-<assets/segmentation_fail.png, id=3, 763.85374pt x 478.78876pt>
+<assets/segmentation_fail.png, id=1, 763.85374pt x 478.78876pt>
 File: assets/segmentation_fail.png Graphic file (type png)
 
 <use assets/segmentation_fail.png>
-Package pdftex.def Info: assets/segmentation_fail.png used on input line 108.
-(pdftex.def)             Requested size: 245.71811pt x 154.01915pt.
+Package pdftex.def Info: assets/segmentation_fail.png used on input line 93.
+(pdftex.def)             Requested size: 230.5915pt x 144.54pt.
 
-<assets/segment_before.jpg, id=4, 1682.285pt x 2601.72pt>
+<assets/segment_before.jpg, id=2, 1682.285pt x 2601.72pt>
 File: assets/segment_before.jpg Graphic file (type jpg)
 
 <use assets/segment_before.jpg>
-Package pdftex.def Info: assets/segment_before.jpg used on input line 115.
+Package pdftex.def Info: assets/segment_before.jpg used on input line 101.
 (pdftex.def)             Requested size: 93.43723pt x 144.54pt.
  [1{/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
- <./assets/red-window.jpg>]
-<assets/coffee_window_vs_svm.png, id=14, 1204.5pt x 401.5pt>
+]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 110.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 110.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 110.
+
+<assets/red-window.jpg, id=12, 301.125pt x 250.9375pt>
+File: assets/red-window.jpg Graphic file (type jpg)
+
+<use assets/red-window.jpg>
+Package pdftex.def Info: assets/red-window.jpg used on input line 124.
+(pdftex.def)             Requested size: 245.71811pt x 204.77454pt.
+
+<assets/coffee_window_vs_svm.png, id=13, 1204.5pt x 401.5pt>
 File: assets/coffee_window_vs_svm.png Graphic file (type png)
 
 <use assets/coffee_window_vs_svm.png>
-Package pdftex.def Info: assets/coffee_window_vs_svm.png used on input line 125
+Package pdftex.def Info: assets/coffee_window_vs_svm.png used on input line 177
 .
 (pdftex.def)             Requested size: 491.43622pt x 163.81349pt.
 
-<assets/contrast_fail.jpg, id=15, 602.25pt x 602.25pt>
+<assets/contrast_fail.jpg, id=14, 602.25pt x 602.25pt>
 File: assets/contrast_fail.jpg Graphic file (type jpg)
 
 <use assets/contrast_fail.jpg>
-Package pdftex.def Info: assets/contrast_fail.jpg used on input line 135.
+Package pdftex.def Info: assets/contrast_fail.jpg used on input line 186.
 (pdftex.def)             Requested size: 245.71811pt x 245.72026pt.
+
+<assets/pattern_window_vs_svm.png, id=15, 552.0625pt x 827.09pt>
+File: assets/pattern_window_vs_svm.png Graphic file (type png)
+
+<use assets/pattern_window_vs_svm.png>
+Package pdftex.def Info: assets/pattern_window_vs_svm.png used on input line 19
+3.
+(pdftex.def)             Requested size: 48.23459pt x 72.26999pt.
 Missing character: There is no Ò in font ptmr7t!
 Missing character: There is no Ó in font ptmr7t!
 Missing character: There is no Ò in font ptmr7t!
@@ -280,15 +287,34 @@ Missing character: There is no Ò in font ptmr7t!
 Missing character: There is no Ó in font ptmr7t!
 Missing character: There is no Ò in font ptmr7t!
 Missing character: There is no Ó in font ptmr7t!
+ [2 <./assets/segmentation_fail.png> <./assets/segment_before.jpg> <./assets/re
+d-window.jpg>]
 Missing character: There is no é in font ptmr7t!
 
-Underfull \hbox (badness 10000) in paragraph at lines 180--181
+Underfull \hbox (badness 10000) in paragraph at lines 242--243
 []\OT1/ptm/m/n/8 Abid, K. (2012, July 11). stack-over-flow Re-trieved from
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 180--181
+Underfull \hbox (badness 10000) in paragraph at lines 242--243
 \OT1/ptm/m/n/8 http://stackoverflow.com/questions/11294859/how-to-define-the-
+ []
+
+
+Underfull \hbox (badness 2020) in paragraph at lines 244--245
+[]\OT1/ptm/m/n/8 Mertens, K. (2005). Dirt de-tec-tion on brown eggs by means
+ []
+
+
+Underfull \hbox (badness 4266) in paragraph at lines 244--245
+\OT1/ptm/m/n/8 of color com-puter vi-sion. Manuscript sub-mit-ted for pub-li-ca
+-
+ []
+
+
+Underfull \hbox (badness 1521) in paragraph at lines 244--245
+\OT1/ptm/m/n/8 tion, Egg Qual-ity and In-cu-ba-tion Re-search Group, , Avail-ab
+le
  []
 
 
@@ -302,26 +328,25 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the US letter (8.5in X 11in) paper size.
 
-[2 <./assets/pattern_window_vs_svm.png> <./assets/segmentation_fail.png> <./ass
-ets/segment_before.jpg> <./assets/contrast_fail.jpg>] [3 <./assets/coffee_windo
-w_vs_svm.png>] (./busbot.aux) ) 
+[3 <./assets/coffee_window_vs_svm.png>] [4 <./assets/contrast_fail.jpg> <./asse
+ts/pattern_window_vs_svm.png>] (./busbot.aux) ) 
 Here is how much of TeX's memory you used:
- 2115 strings out of 493488
- 33521 string characters out of 3141326
- 94175 words of memory out of 3000000
- 5420 multiletter control sequences out of 15000+200000
- 33036 words of font info for 62 fonts, out of 3000000 for 9000
+ 2137 strings out of 493488
+ 33770 string characters out of 3141326
+ 97205 words of memory out of 3000000
+ 5435 multiletter control sequences out of 15000+200000
+ 36583 words of font info for 70 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 37i,8n,23p,718b,281s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/local/texlive/2012/texmf-dist/fonts/enc/dv
-ips/base/8r.enc}</usr/local/texlive/2012/texmf-dist/fonts/type1/urw/times/utmb8
-a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></u
-sr/local/texlive/2012/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/t
-exlive/2012/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on busbot.pdf (3 pages, 3083411 bytes).
+ 37i,8n,23p,796b,281s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/local/texlive/2012/texmf-d
+ist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2012/texmf-dist/fonts/type1
+/urw/times/utmb8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/times
+/utmbi8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/times/utmr8a.p
+fb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on busbot.pdf (4 pages, 3086479 bytes).
 PDF statistics:
- 37 PDF objects out of 1000 (max. 8388607)
- 21 compressed objects within 1 object stream
+ 40 PDF objects out of 1000 (max. 8388607)
+ 23 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
