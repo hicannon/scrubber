@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1365161772 "busbot.tex" "busbot.pdf" "busbot" 1365161773
+["pdflatex"] 1365164663 "busbot.tex" "busbot.pdf" "busbot" 1365164664
   "/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2012/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2012/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1136768653 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -17,6 +17,8 @@
   "/usr/local/texlive/2012/texmf-dist/fonts/tfm/public/cm/cmr8.tfm" 1136768653 1292 21c1c5bfeaebccffdb478fd231a0997d ""
   "/usr/local/texlive/2012/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1136768653 1116 933a60c408fc0a863a92debe84b2d294 ""
   "/usr/local/texlive/2012/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1136768653 1120 8b7d695260f3cff42e636090a8002094 ""
+  "/usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
+  "/usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/local/texlive/2012/texmf-dist/fonts/type1/urw/times/utmb8a.pfb" 1136849748 44729 811d6c62865936705a31c797a1d5dada ""
   "/usr/local/texlive/2012/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb" 1136849748 44656 0cbca70e0534538582128f6b54593cca ""
   "/usr/local/texlive/2012/texmf-dist/fonts/type1/urw/times/utmr8a.pfb" 1136849748 46026 6dab18b61c907687b520c72847215a68 ""
@@ -57,8 +59,8 @@
   "assets/red-window.jpg" 1365138143 6680 d57d9625626be62caf098f09b8b9e462 ""
   "assets/segment_before.jpg" 1364844219 1102300 ea5f035182dbeaf7003fe388ba0279fb ""
   "assets/segmentation_fail.png" 1365139888 111633 37501c00ac0dcf07c7a0509104e54829 ""
-  "busbot.aux" 1365161773 2552 d64ff8321d5ca75101241daba8348dce ""
-  "busbot.tex" 1365161770 18581 9cbe4cc1350d5e7cafe6d217adca29d6 ""
+  "busbot.aux" 1365164664 2564 ba015e2163a37d5ded732accd3514ecf ""
+  "busbot.tex" 1365164662 19691 84a6d11d53327ce07448efafdbb14b54 ""
   "ieeeconf.cls" 1365075534 197438 30172a4dc9646cb3c0d89a097bdf6780 ""
   (generated)
   "busbot.aux"

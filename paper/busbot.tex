@@ -25,7 +25,7 @@
 %\usepackage{amssymb}  % assumes amsmath package installed
 
 \title{\LARGE \bf
-BusBot: A Stain Learning Approach
+BusBot: An Approach Towards Learning Stains
 }
 
 %\author{ \parbox{3 in}{\centering Huibert Kwakernaak*
@@ -74,19 +74,19 @@ Although very little has been done in terms of general stain detection, there ha
 We divided the problem into two main components; stain identification and cleaning kinematics. For the stain identification sub-problem we mainly focused on developing algorithms that would enable a robot to correctly identify stains. First, we clearly established our definition of a ``stain'' as a discoloration produced by foreign matter having penetrated into or chemically reacted with a material. The most important property of these stains is the discoloration of the stained area from the background texture color. 
 
 \subsection{Image Segmentation}
-Since a stain will usually stand out in comparison with the background, one natural approach we explored is to segment the image into background and stain parts. To accomplish this, we used a standard Watershed algorithm to segment the image. Specifically, watershed by flooding~\cite{watershed} was utilized. The segmentation process initially erodes the image to obtain seed points, which are defined as pixels whose values are representative of their neighbors. The watershed algorithm is then run on the seed points to obtain a segmentation. The initial seed points allow distinct segments to be treated contiguously and to partion the output in two, as a normal segmentation might produce many layers of segments. The watershed algorithm was chosen because of its speed and ability to clearly segment trivial test cases. 
+Since a stain will usually stand out in comparison with the background, one natural approach we explored is to segment the image into background and stain parts. To accomplish this, we used a standard Watershed algorithm to segment the image. Specifically, watershed by flooding~\cite{watershed} was utilized. The segmentation process initially erodes the image to obtain seed points, which are defined as pixels whose values are representative of their neighbors. The watershed algorithm is then run on the seed points to obtain a segmentation. The initial seed points allow distinct segments to be treated contiguously and to partition the output in two, as a normal segmentation might produce many layers of segments. The watershed algorithm was chosen because of its speed and ability to clearly segment trivial test cases. 
 
 \subsection{Average Window Approach}
-After initial testing, the initial Watershed segmentation turned out to be too sensative to background textures. As a result, we set about to create methods that can overcome this. In the window approach, we split up the image into fixed size square blocks. We then compare each window with the average window. Finally, we normalize the differences by scaling each difference with respect to the maximum and minimum difference in the photo. Windows with a difference greater than a threshold are then classified as stains. The motivation of this window approach is that although each window may differ from some background texture, a window with a stain in it will differ more relatively to thoses that do not. In this way, we account for the differences created by a background, especially any repeating one.
+After initial testing, the initial Watershed segmentation turned out to be too sensitive to background textures. As a result, we set about to create methods that can overcome this. In the window approach, we split up the image into fixed size square blocks. We then compare each window with the average window. Finally, we normalize the differences by scaling each difference with respect to the maximum and minimum difference in the photo. Windows with a difference greater than a threshold are then classified as stains. The motivation of this window approach is that although each window may differ from some background texture, a window with a stain in it will differ more relatively to those that do not. In this way, we account for the differences created by a background, especially any repeating one.
 
 \subsection{Learning Features}
-A natural extension to the above approach is to apply classical Machine Learning methods to improve robustness. Rather than hand specifying how thresholds should be specified, we can learn them through supervised training methods. For this, we choose SVM's for its extensibitiliy and effectiveness. For the features, we first split the image on a per channel basis, one for each of the three color channels. For each channel, we used the absolute difference between the average intensity in the window and the average, mean and mode intensity (per channel) of the image as features. In addition, the difference in variation of intensities within the window as well as the edginess of the window were also used as features. The motivation for the variance is that a stain might cover up an otherwise colorful background, so a decrease in variance might tell us something about whether the window is indeed a stain. Similarly, a window with a stain will have different degree of edginess as compared to those without. 
+A natural extension to the above approach is to apply classical Machine Learning methods to improve robustness. Rather than hand specifying how thresholds should be specified, we can learn them through supervised training methods. For this, we choose SVM's for its extensibility and effectiveness. For the features, we first split the image on a per channel basis, one for each of the three color channels. For each channel, we used the absolute difference between the average intensity in the window and the average, mean and mode intensity (per channel) of the image as features. In addition, the difference in variation of intensities within the window as well as the edginess of the window were also used as features. The motivation for the variance is that a stain might cover up an otherwise colorful background, so a decrease in variance might tell us something about whether the window is indeed a stain. Similarly, a window with a stain will have different degree of edginess as compared to those without. 
 
 \section{Results and Discussion}
 The complete dataset used to evaluate the algorithms contains about 70 images, which results in roughly 70,000 training examples (at a window size of 10x10). To ensue that distribution of positive and negative examples is roughly evenly split, we took a simple random sample of the negative training examples. For every picture, we divide it into rectangular regions as governed by a window size parameter. These rectangular regions are used to classify windows as stained or non-stained. If a window overlaps with a labeled stain region, that window is considered to be correctly identified.
 
 \subsection{Segmentation}
-Several disadvantages were discovered through experimentation with the Watershed segmentation. It was often difficult to determine which segmented portion of the mask was the stain and which was the background. In addtion, the watershed segmentation approach was unable to handle patterned backgrounds or textures such as wood, as figures~\ref{fig:segmentation_fail} and~\ref{fig:before_segment} demonstrate. Finally, this method was hard to modify, and therefore improve, because any changes could only be done through pre and post processing.
+Several disadvantages were discovered through experimentation with the Watershed segmentation. It was often difficult to determine which segmented portion of the mask was the stain and which was the background. In addition, the watershed segmentation approach was unable to handle patterned backgrounds or textures such as wood, as figures~\ref{fig:segmentation_fail} and~\ref{fig:before_segment} demonstrate. Finally, this method was hard to modify, and therefore improve, because any changes could only be done through pre and post processing.
 
 \begin{figure}
 \centering
@@ -128,18 +128,18 @@ Window Size & Average Precision & Average Recall \\
 \end{figure}
 
 \subsection{SVM Learned}
-The SVM implementation used in this paper was SVMlight~\cite{svm_light} and the window size is 10x10 for the examples used in this paper. Table~\ref{table:train1_test2} displays the result statistics of training on a sub-dataset labeled as ``dataset 1'' and testing on a sub-dataset labeled as ``dataset 2''. Table~\ref{table:train2_test1} displays the result statistics of the reciprocal training/testing relationship. It is worth noting that the overall performance is higher in table~\ref{table:train2_test1} for multiple reasons. Dataset 1 is the first set of test images obtained and manually classified. The dataset contains images with slight contrast issues which leads to bad training data. This issue of contrast is further discussed later in this paper. Another reason for the poorer performance when training on dataset 1 results from misrepresentation of stains due to poor manual classification. Because most stains are not square in shape, attempting to classify curved stains using square bounding boxes will inevitably result in areas misclassified as stains. As a result, many pictures in the ``dataset 1'' contain misclassified examples and this source of error was noted before ``dataset 2'' was classified. The bounding boxes in ``dataset 2'' are drawn much closer to the shape of the stain in order to reduce error and the results show a definite reduction.
+The SVM implementation used in this paper was SVMlight~\cite{svm_light} and the window size is 10x10 for the examples used in this paper. Table~\ref{table:train1_test2} displays the result statistics of training on a sub-dataset labeled as ``dataset 1'' and testing on a sub-dataset labeled as ``dataset 2''. Table~\ref{table:train2_test1} displays the result statistics of the reciprocal training  and testing relationship. It is worth noting that the overall performance is higher in table~\ref{table:train2_test1} for multiple reasons. Dataset 1 is the first set of test images obtained and manually classified. The dataset contains images with slight contrast issues which leads to bad training data. This issue of contrast is further discussed later in this paper. Another reason for the poorer performance when training on dataset 1 results from misrepresentation of stains due to poor manual classification. Because most stains are not square in shape, attempting to classify curved stains using square bounding boxes will inevitably result in areas misclassified as stains. As a result, many pictures in the ``dataset 1'' contain misclassified examples and this source of error was noted before ``dataset 2'' was classified. The bounding boxes in ``dataset 2'' are drawn much closer to the shape of the stain in order to reduce error and the results show a definite reduction.
 
 Qualitative comparisons between the SVM detected and window detected regions also highlight the improved performance brought on by machine learning. Figure~\ref{fig:coffee_comparison} shows the results of window-based detection on the left and the results of learning on the right. It is worth noting that not only does the learning approach label much more of the stain, it also correctly identifies sections of the stain that were not classified initially. Figure~\ref{fig:pattern_comparison} best highlights the advantages of the learning approach. In the top image, the window-based detector incorrectly identified the background pattern as a series of stains. In the bottom image the SVM correctly labels the stained region while not misclassifying the background pattern.
 
-A parameter that must be specified when using a SVM is c, which determines the penalty for a misclassified instance. Testing on the validation set, we found that c=0.0001 generally gave good performance. This also correlates to a tradeoff between recall and precision. By using a higher c, we trade higher recall for precision.
+A parameter that must be specified when using a SVM is c, which determines the penalty for a misclassified instance. Testing on the validation set, we found that $c=0.0001$ generally gave good performance. This also correlates to a trade-off between recall and precision. By using a higher c, we trade higher recall for precision.
 
 \subsection{Error Analysis}
 Most of the cases where the SVM failed were in images where there are lighting differences or other artifacts that fit our original definition of a stain. Figure~\ref{fig:contrast_fail} shows a representative case of where our method fails. The image has major lighting differences which makes identifying the background difficult. This might be solved by first segmenting the image first and then applying the SVM on the individual segments. This will be explored for the following sprint.
 
 \begin{table}
 \begin{center} \begin{tabular}[h]{l|l|l|l}
-k & Accuracy & Precision & Recall \\ 
+c & Accuracy & Precision & Recall \\ 
 \hline
 0.00075 & 46.2 & 35.81 & 9.58 \\ 
 0.001 & 50.71 & 51.88 & 19.55 \\ 
@@ -156,7 +156,7 @@ k & Accuracy & Precision & Recall \\
 
 \begin{table}
 \begin{center} \begin{tabular}[h]{l|l|l|l}
-k & Accuracy & Precision & Recall \\
+c & Accuracy & Precision & Recall \\
 \hline
 0.00075 & 66.12 & 72.74 & 51.62 \\
 0.001 & 66.12 & 72.71 & 51.65 \\
@@ -190,46 +190,13 @@ k & Accuracy & Precision & Recall \\
 
 \begin{figure}
 \centering
-\epsfig{file=assets/contrast_fail.jpg,width=1\columnwidth}
+\includegraphics[height=2.5in]{assets/contrast_fail.jpg}
 \caption{Bad Contrast}
 \label{fig:contrast_fail}
 \end{figure}
 
 \subsection{Future Work}
-While the learning approach towards stain detection has proven to be more effective than segmentation and window comparison-based solutions the process could benefit from additional image preprocessing to reduce error.
-
-Also we need to program the ROBOT.
-
-\addtolength{\textheight}{-12cm}   % This command serves to balance the column lengths
-                                  % on the last page of the document manually. It shortens
-                                  % the textheight of the last page by a suitable amount.
-                                  % This command does not take effect until the next page
-                                  % so it should come on the page before the last. Make
-                                  % sure that you do not shorten the textheight too much.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{APPENDIX}
-
-Appendixes should appear before the acknowledgment.
-
-\section*{ACKNOWLEDGMENT}
-
-The preferred spelling of the word “acknowledgment” in America is without an “e” after the “g”. Avoid the stilted expression, “One of us (R. B. G.) thanks . . .”  Instead, try “R. B. G. thanks”. Put sponsor acknowledgments in the unnumbered footnote on the first page.
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-References are important to the reader; therefore, each citation must be complete and correct. If at all possible, references should be commonly available publications.
-
+While the learning approach towards stain detection has proven to be more effective than segmentation and window comparison-based solutions, the process could benefit from additional image preprocessing to reduce error. For example, erosion filters would remove small noise and dilation filters would strengthen stain connected components. An additional source of error reduction is better manual classification techniques. As noted in the results section there was a significant improvement in performance when manual classification techniques were improved. While the creation of a classification tool may be out of the scope of the project, we may work on it if there is additional time.
 
 
 \begin{thebibliography}{99}
