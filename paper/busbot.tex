@@ -134,7 +134,8 @@ Qualitative comparisons between the SVM detected and window detected regions als
 
 A parameter that must be specified when using a SVM is c, which determines the penalty for a misclassified instance. Testing on the validation set, we found that c=0.0001 generally gave good performance. This also correlates to a tradeoff between recall and precision. By using a higher c, we trade higher recall for precision.
 
-Contrast.
+\subsection{Error Analysis}
+Most of the cases where the SVM failed were in images where there are lighting differences or other artifacts that fit our original definition of a stain. Figure~\ref{fig:contrast_fail} shows a representative case of where our method fails. The image has major lighting differences which makes identifying the background difficult. This might be solved by first segmenting the image first and then applying the SVM on the individual segments. This will be explored for the following sprint.
 
 \begin{table}
 \begin{center} \begin{tabular}[h]{l|l|l|l}
@@ -190,7 +191,7 @@ k & Accuracy & Precision & Recall \\
 \begin{figure}
 \centering
 \epsfig{file=assets/contrast_fail.jpg,width=1\columnwidth}
-\caption{Window-based}
+\caption{Bad Contrast}
 \label{fig:contrast_fail}
 \end{figure}
 
