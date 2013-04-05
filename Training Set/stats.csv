@@ -1,11 +1,11 @@
 File,True positives,False positives,False negatives,Precision,Recall
-'coffee table discoloration.png',18.0,3.0,99.0,0.8571428571428571,0.15384615384615385
-'abc2.jpg',14.0,0.0,242.0,1.0,0.0546875
-'dirty-coffee-stamp-on-table.jpg',0.0,92.0,127.0,0.0,0.0
-'IMAG0488.jpg',17.0,81.0,87.0,0.17346938775510204,0.16346153846153846
-'gAolWQU.jpg',0.0,542.0,52.0,0.0,0.0
-'236973.jpg',24.0,0.0,96.0,1.0,0.2
-'IMG_1674.jpg',5.0,0.0,30.0,1.0,0.14285714285714285
-'coffee-stains-wood.jpg',0.0,59.0,389.0,0.0,0.0
-'dining-table-damage.jpg',0.0,43.0,277.0,0.0,0.0
-'julie-blog-oil-stains-hardwood-floors.jpg',5.0,103.0,258.0,0.046296296296296294,0.019011406844106463
+'q-stain.jpg',0.0,0.0,152.0,0.0,0.0
+'Coffee-Stain-Removal-from-Your-Carpet.jpg',398.0,228.0,275.0,0.6357827476038339,0.5913818722139673
+'carpet-bleach-stain-repair-vancouver-wa.jpg',5.0,83.0,837.0,0.056818181818181816,0.0059382422802850355
+'how-to-clean-ketchup-from-a-carpet.WidePlayer.jpg',144.0,28.0,21.0,0.8372093023255814,0.8727272727272727
+'stain-on-carpet-right.jpg',0.0,1.0,147.0,0.0,0.0
+'travelodge-knutsford.jpg',18.0,15.0,40.0,0.5454545454545454,0.3103448275862069
+'blood-stained.jpg',78.0,0.0,260.0,1.0,0.23076923076923078
+'how-to-remove-candle-wax-from-a-carpet.WidePlayer.jpg',57.0,0.0,183.0,1.0,0.2375
+'howard-johnson-bethel.jpg',0.0,0.0,229.0,0.0,0.0
+'stain_carpet-blood.jpg',6.0,2.0,11.0,0.75,0.35294117647058826
