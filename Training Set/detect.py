@@ -47,8 +47,9 @@ def test(dat, windowSize, thresh, modelFname = "model2"):
                     draw.rectangle(getBoxFromPoint(windowSize,x,y))
         stats(dat,detected,windowSize,image,sx,sy,stat_array)                    
         im.show()
+        im.save(image+"marked-Window.jpg", "JPEG")
     writestats(stat_array)
-
+    
 def fixSize(im):
     sx,sy = im.size
     if sy>sx:
@@ -230,7 +231,7 @@ def segment(fname):
     cv2.namedWindow("Image window", flags=cv2.CV_WINDOW_AUTOSIZE)
     cv2.imshow("Image window", m)
     cv2.waitKey(300)
-    #raw_input("")
+    raw_input("")
 
 def stats(dat, detected, windowSize, image, sx, sy, output):
     foo = detected.load()
@@ -284,7 +285,7 @@ def writestats(stat_array):
     f2.close()
 
 if __name__=="__main__":
-	test(loadTrain("train2.dat"),10, 100, "model1(.01)")
+	test(loadTrain("train2.dat"),10, 100, "model2(.0001)")
 #detectStains("how-to-get-blood-out-of-the-carpet.WidePlayer.jpg", 50)
 #detectStains("red-wine.jpg",25)
 #detectStains("stains.jpg",10)
