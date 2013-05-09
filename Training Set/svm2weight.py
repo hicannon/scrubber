@@ -51,6 +51,7 @@ def getWeights(f):
     lines = f.readlines()
     printOutput = False
     w = {}
+    b = 0
     for line in lines:
         if i>10:
             features = line[:line.find('#')-1]
@@ -74,6 +75,8 @@ def getWeights(f):
                 print "Parsing error!\n"
                 printOutput = False
                 break
+            else:
+            	b = float(line[:line.find('#')-1])
         
         i+=1
     f.close()
@@ -87,7 +90,7 @@ def getWeights(f):
             print i,':',j
         i+=1
         weights.append(j)
-    return weights
+    return weights, b
 
 if __name__ == "__main__":
     getWeights(get_file())

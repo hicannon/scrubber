@@ -1,6 +1,6 @@
 import detect
 import random
-from PIL import ImageOps, ImageFilter, ImageStat
+from PIL import Image, ImageOps, ImageFilter, ImageStat
 
 def writeSVMTrain(labelFname="train.dat", svmFname="SVMDat.dat"):
 	labels = detect.loadTrain(labelFname)
@@ -36,19 +36,20 @@ def getVector(features):
 			out.append(channel)
 	return out
 						
-def genSVMTrainInstance(im, bounds, windowSize=10, returnAll = False):
+def genSVMTrainInstance(im, bounds, windowSize=10, returnAll = False, mask = None):
 	data = []
 	#greyImg = ImageOps.grayscale(image)
 	sx,sy = im.size
-	mean, mode, median, stddev, edge = statistics(im)
+	mean, mode, median, stddev, edge = statistics(im, mask)
+	#mask.show()
 	dataPos = []
 	dataNeg = []
 	combined = []
 	#print sx,sy,windowSize
 	for y in range(sy/windowSize):
-		x = x*windowSize
+		y = y*windowSize		
 		for x in range(sx/windowSize):
-			y = y*windowSize
+			x = x*windowSize
 			label = 0
 			#print "bla"
 			for bound in bounds:
@@ -61,13 +62,23 @@ def genSVMTrainInstance(im, bounds, windowSize=10, returnAll = False):
 			#	continue
 			#print x,y
 			window = im.crop((x,y,x+windowSize, y+windowSize))
+			wMask = None
+			if mask!=None:
+				wMask = mask.crop((x,y,x+windowSize, y+windowSize))
 			#window.show()
-			wMean, wMode, wMedian, wStddev, wEdge = statistics(window)
-			#print wMean
-			meanDiff = [abs(a-b) for (a,b) in zip(wMean, mean)]
-			modeDiff = [abs(a-b) for (a,b) in zip(wMode, mode)]
-			medianDiff = [abs(a-b) for (a,b) in zip(wMedian, median)]
-			stdDiff = [abs(a-b) for (a,b) in zip(wStddev, stddev)]
+			#try:
+				wMean, wMode, wMedian, wStddev, wEdge = statistics(window, wMask)
+				#print wMean
+				meanDiff = [abs(a-b) for (a,b) in zip(wMean, mean)]
+				modeDiff = [abs(a-b) for (a,b) in zip(wMode, mode)]
+				medianDiff = [abs(a-b) for (a,b) in zip(wMedian, median)]
+				stdDiff = [abs(a-b) for (a,b) in zip(wStddev, stddev)]
+			"""except:
+				meanDiff = [0]*3
+				modeDiff = [0]*3
+				medianDiff = [0]*3
+				stdDiff = [0]*3
+				wEdge = [0]*3"""
 			#todo Edge diff
 			if label==1:		
 				dataPos.append((label,meanDiff,modeDiff,medianDiff,stdDiff,wEdge))
@@ -82,18 +93,21 @@ def inBounds(x,y, bound):
 	else:
 		return False
 
+def createMask(img):
+	pass
+	
 #256 is white!!!
-def statistics(im, binSize=1):
-	sx, sy = im.size
-	stat = ImageStat.Stat(im)
-	numPixels = sx*sy
+def statistics(im, mask=None):
+	stat = ImageStat.Stat(im, mask)
+	if sum(stat.count)==0:
+		return ([0]*3,[0]*3,[0]*3,[0]*3,[0]*3)
 	mean = stat.mean
 	mode = []
 	median = stat.median
 	stddev = stat.stddev
 	edgeness = []
 	for band in im.split(): #split into each color (r,g,b,etc)
-		hist = im.histogram()
+		hist = im.histogram(mask)
 		
 		"""avg = 0
 		for color in range(len(hist)): #should be 256!
@@ -105,7 +119,7 @@ def statistics(im, binSize=1):
 		mode.append(mostFreqColor)
 		
 		im1 = band.filter(ImageFilter.FIND_EDGES)
-		temp = ImageStat.Stat(im1)
+		temp = ImageStat.Stat(im1, mask)
 		edgeness.append(temp.sum[0])
 	return (mean,mode,median,stddev,edgeness)
 	
