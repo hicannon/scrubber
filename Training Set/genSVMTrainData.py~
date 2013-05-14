@@ -67,12 +67,12 @@ def genSVMTrainInstance(im, bounds, windowSize=10, returnAll = False, mask = Non
 				wMask = mask.crop((x,y,x+windowSize, y+windowSize))
 			#window.show()
 			#try:
-				wMean, wMode, wMedian, wStddev, wEdge = statistics(window, wMask)
-				#print wMean
-				meanDiff = [abs(a-b) for (a,b) in zip(wMean, mean)]
-				modeDiff = [abs(a-b) for (a,b) in zip(wMode, mode)]
-				medianDiff = [abs(a-b) for (a,b) in zip(wMedian, median)]
-				stdDiff = [abs(a-b) for (a,b) in zip(wStddev, stddev)]
+			wMean, wMode, wMedian, wStddev, wEdge = statistics(window, wMask)
+			#print wMean
+			meanDiff = [abs(a-b) for (a,b) in zip(wMean, mean)]
+			modeDiff = [abs(a-b) for (a,b) in zip(wMode, mode)]
+			medianDiff = [abs(a-b) for (a,b) in zip(wMedian, median)]
+			stdDiff = [abs(a-b) for (a,b) in zip(wStddev, stddev)]
 			"""except:
 				meanDiff = [0]*3
 				modeDiff = [0]*3

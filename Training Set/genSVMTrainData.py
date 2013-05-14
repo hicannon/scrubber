@@ -73,6 +73,7 @@ def genSVMTrainInstance(im, bounds, windowSize=10, returnAll = False, mask = Non
 			modeDiff = [abs(a-b) for (a,b) in zip(wMode, mode)]
 			medianDiff = [abs(a-b) for (a,b) in zip(wMedian, median)]
 			stdDiff = [abs(a-b) for (a,b) in zip(wStddev, stddev)]
+			edgeDiff = [abs(a-b) for (a,b) in zip(wEdge, edge)]
 			"""except:
 				meanDiff = [0]*3
 				modeDiff = [0]*3

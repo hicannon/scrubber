@@ -26,7 +26,7 @@ def test(dat, windowSize, thresh, modelFname = "model2"):
     for image in dat.keys():
         #print image
         im = loadImage(image)
-        segment(image)
+        #segment(image)
         sx,sy = im.size
         detected = detectStains(fixSize(im),None, windowSize, thresh, modelFname)
         #segment(image)
@@ -69,9 +69,9 @@ def detectStains(im, mask = None, windowSize=10, thresh=150, modelFname = "model
     #    detectStainsMono(band, windowSize)
     #im = fixSize(im)
     #segment(fname)
-    return detectStainsMono(im,windowSize, thresh, mask)
-    #weights = svm2weight.getWeights(svm2weight.load_file(modelFname))
-    #return detectStainsSVM(im,windowSize, weights, mask)
+    #return detectStainsMono(im,windowSize, thresh, mask)
+    weights = svm2weight.getWeights(svm2weight.load_file(modelFname))
+    return detectStainsSVM(im,windowSize, weights, mask)
 
 def detectStainsSVM(im, windowSize, weights, mask=None):
     #print weights
@@ -294,7 +294,7 @@ def writestats(stat_array):
     f2.close()
 
 if __name__=="__main__":
-	test(loadTrain("trainAll.dat"),10, 100, "model2(.0001)")
+	test(loadTrain("trainAll.dat"),10, 100, "model2(0.0001)")
 #detectStains("how-to-get-blood-out-of-the-carpet.WidePlayer.jpg", 50)
 #detectStains("red-wine.jpg",25)
 #detectStains("stains.jpg",10)
