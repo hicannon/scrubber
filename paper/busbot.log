@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  14 MAY 2013 01:37
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  14 MAY 2013 01:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -224,88 +224,97 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
+<assets/pr2.jpg, id=1, 2125.9425pt x 1733.47626pt>
+File: assets/pr2.jpg Graphic file (type jpg)
+ <use assets/pr2.jpg>
+Package pdftex.def Info: assets/pr2.jpg used on input line 76.
+(pdftex.def)             Requested size: 245.71811pt x 200.33748pt.
+
 [1{/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
-]
-<assets/segmentation_fail.png, id=10, 763.85374pt x 478.78876pt>
+ <./assets/pr2.jpg>] <assets/segmentation_fail.png, id=11, 763.85374pt x 478.78
+876pt>
 File: assets/segmentation_fail.png Graphic file (type png)
 
 <use assets/segmentation_fail.png>
-Package pdftex.def Info: assets/segmentation_fail.png used on input line 95.
+Package pdftex.def Info: assets/segmentation_fail.png used on input line 102.
 (pdftex.def)             Requested size: 230.5915pt x 144.54pt.
 
-<assets/segment_before.jpg, id=11, 1682.285pt x 2601.72pt>
+<assets/segment_before.jpg, id=12, 1682.285pt x 2601.72pt>
 File: assets/segment_before.jpg Graphic file (type jpg)
 
 <use assets/segment_before.jpg>
-Package pdftex.def Info: assets/segment_before.jpg used on input line 103.
+Package pdftex.def Info: assets/segment_before.jpg used on input line 110.
 (pdftex.def)             Requested size: 93.43723pt x 144.54pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 112.
+(Font)              <8> on input line 119.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 112.
+(Font)              <6> on input line 119.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 112.
+(Font)              <5> on input line 119.
 
-<assets/red-window.jpg, id=12, 301.125pt x 250.9375pt>
+<assets/red-window.jpg, id=13, 301.125pt x 250.9375pt>
 File: assets/red-window.jpg Graphic file (type jpg)
 
 <use assets/red-window.jpg>
-Package pdftex.def Info: assets/red-window.jpg used on input line 126.
+Package pdftex.def Info: assets/red-window.jpg used on input line 133.
 (pdftex.def)             Requested size: 173.45796pt x 144.54pt.
- [2 <./assets/segmentation_fail.png> <./assets/segment_before.jpg> <./assets/re
-d-window.jpg>]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 137.
 
-<assets/coffee_window_vs_svm.png, id=16, 1204.5pt x 401.5pt>
+Underfull \vbox (badness 1168) has occurred while \output is active []
+
+ [2 <./assets/segmentation_fail.png> <./assets/segment_before.jpg>]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 144.
+
+<assets/coffee_window_vs_svm.png, id=17, 1204.5pt x 401.5pt>
 File: assets/coffee_window_vs_svm.png Graphic file (type png)
 
 <use assets/coffee_window_vs_svm.png>
-Package pdftex.def Info: assets/coffee_window_vs_svm.png used on input line 179
+Package pdftex.def Info: assets/coffee_window_vs_svm.png used on input line 186
 .
 (pdftex.def)             Requested size: 491.43622pt x 163.81349pt.
 
-<assets/pattern_window_vs_svm.png, id=17, 552.0625pt x 827.09pt>
+<assets/pattern_window_vs_svm.png, id=18, 552.0625pt x 827.09pt>
 File: assets/pattern_window_vs_svm.png Graphic file (type png)
 
 <use assets/pattern_window_vs_svm.png>
-Package pdftex.def Info: assets/pattern_window_vs_svm.png used on input line 18
-6.
+Package pdftex.def Info: assets/pattern_window_vs_svm.png used on input line 19
+3.
 (pdftex.def)             Requested size: 144.71219pt x 216.81pt.
 
-<assets/contrast_fail.jpg, id=18, 602.25pt x 602.25pt>
+<assets/contrast_fail.jpg, id=19, 602.25pt x 602.25pt>
 File: assets/contrast_fail.jpg Graphic file (type jpg)
 
 <use assets/contrast_fail.jpg>
-Package pdftex.def Info: assets/contrast_fail.jpg used on input line 195.
+Package pdftex.def Info: assets/contrast_fail.jpg used on input line 202.
 (pdftex.def)             Requested size: 180.67639pt x 180.67499pt.
- [3 <./assets/pattern_window_vs_svm.png> <./assets/contrast_fail.jpg>]
+ [3 <./assets/red-window.jpg>]
 Missing character: There is no é in font ptmr7t!
 
-Underfull \hbox (badness 10000) in paragraph at lines 224--225
+Underfull \hbox (badness 10000) in paragraph at lines 231--232
 []\OT1/ptm/m/n/8 Abid, K. (2012, July 11). stack-over-flow Re-trieved from
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 224--225
+Underfull \hbox (badness 10000) in paragraph at lines 231--232
 \OT1/ptm/m/n/8 http://stackoverflow.com/questions/11294859/how-to-define-the-
  []
 
-
-Underfull \hbox (badness 2020) in paragraph at lines 226--227
+[4 <./assets/coffee_window_vs_svm.png> <./assets/pattern_window_vs_svm.png> <./
+assets/contrast_fail.jpg>]
+Underfull \hbox (badness 2020) in paragraph at lines 233--234
 []\OT1/ptm/m/n/8 Mertens, K. (2005). Dirt de-tec-tion on brown eggs by means
  []
 
 
-Underfull \hbox (badness 4266) in paragraph at lines 226--227
+Underfull \hbox (badness 4266) in paragraph at lines 233--234
 \OT1/ptm/m/n/8 of color com-puter vi-sion. Manuscript sub-mit-ted for pub-li-ca
 -
  []
 
 
-Underfull \hbox (badness 1521) in paragraph at lines 226--227
+Underfull \hbox (badness 1521) in paragraph at lines 233--234
 \OT1/ptm/m/n/8 tion, Egg Qual-ity and In-cu-ba-tion Re-search Group, , Avail-ab
 le
  []
@@ -322,27 +331,28 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the US letter (8.5in X 11in) paper size.
 
-[4 <./assets/coffee_window_vs_svm.png>] (./busbot.aux) ) 
+[5
+
+] (./busbot.aux) ) 
 Here is how much of TeX's memory you used:
- 2140 strings out of 493488
- 33800 string characters out of 3141326
- 98223 words of memory out of 3000000
- 5438 multiletter control sequences out of 15000+200000
+ 2146 strings out of 493488
+ 33891 string characters out of 3141326
+ 99231 words of memory out of 3000000
+ 5443 multiletter control sequences out of 15000+200000
  36583 words of font info for 70 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  37i,8n,23p,1418b,281s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/local/texlive/201
-2/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2012/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2012/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2012/texmf-dist/fonts
-/type1/urw/times/utmb8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw
-/times/utmbi8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/times/ut
-mr8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-
-Output written on busbot.pdf (4 pages, 3108403 bytes).
+{/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/base/8r.e
+nc}</usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pf
+b></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+</usr/local/texlive/2012/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/loca
+l/texlive/2012/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive
+/2012/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2012/texm
+f-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on busbot.pdf (5 pages, 4045146 bytes).
 PDF statistics:
- 48 PDF objects out of 1000 (max. 8388607)
- 29 compressed objects within 1 object stream
+ 52 PDF objects out of 1000 (max. 8388607)
+ 31 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

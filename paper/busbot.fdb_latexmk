@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1368509827 "busbot.tex" "busbot.pdf" "busbot" 1368509828
+["pdflatex"] 1368510599 "busbot.tex" "busbot.pdf" "busbot" 1368510600
   "/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2012/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2012/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1136768653 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -56,11 +56,12 @@
   "assets/coffee_window_vs_svm.png" 1365138508 590913 37881aaaefaa3cbf171e81f2a205e5f1 ""
   "assets/contrast_fail.jpg" 1365137018 65932 79ae642eb17ef5325388f9023bc58839 ""
   "assets/pattern_window_vs_svm.png" 1365140529 764377 b0aef008831d3f9b1dac357808d32f82 ""
+  "assets/pr2.jpg" 1368510436 936288 fe8543c945535bc3ee14a4bb6331c3ed ""
   "assets/red-window.jpg" 1365138143 6680 d57d9625626be62caf098f09b8b9e462 ""
   "assets/segment_before.jpg" 1364844219 1102300 ea5f035182dbeaf7003fe388ba0279fb ""
   "assets/segmentation_fail.png" 1365139888 111633 37501c00ac0dcf07c7a0509104e54829 ""
-  "busbot.aux" 1368509828 2915 387fa2832e08a5cc4b4dd333bc74761a ""
-  "busbot.tex" 1368509816 19598 3b0de8cf0c23ca2da37a96975eb77294 ""
+  "busbot.aux" 1368510600 3022 a7d38819e2cb7008441b927b57ea535d ""
+  "busbot.tex" 1368510598 19776 f368ffddefa2796691d5a7525412d89e ""
   "ieeeconf.cls" 1365075534 197438 30172a4dc9646cb3c0d89a097bdf6780 ""
   (generated)
   "busbot.aux"
