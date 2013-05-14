@@ -33,7 +33,7 @@ def test(dat, windowSize, thresh, modelFname = "model2"):
         #Draw rectangles on original iamge
         draw = ImageDraw.Draw(im)
         for box in dat[image]:
-            break
+            #break
             coordinates = box.split(" ")
             #print [int(x) for x in coordinates]
             draw.rectangle([int(x) for x in coordinates], outline="red")
@@ -49,7 +49,7 @@ def test(dat, windowSize, thresh, modelFname = "model2"):
                     draw.rectangle(getBoxFromPoint(windowSize,x,y))
         stats(dat,detected,windowSize,image,sx,sy,stat_array)                    
         im.show()
-        #im.save(image+"marked-SVM.jpg", "JPEG")
+        im.save(image+"marked-SVM.jpg", "JPEG")
     writestats(stat_array)
     
 def fixSize(im):
@@ -294,7 +294,7 @@ def writestats(stat_array):
     f2.close()
 
 if __name__=="__main__":
-	test(loadTrain("trainAll.dat"),10, 100, "model2(.0001)")
+	test(loadTrain("trainAll.dat"),10, 100, ".model2(.0001)")
 #detectStains("how-to-get-blood-out-of-the-carpet.WidePlayer.jpg", 50)
 #detectStains("red-wine.jpg",25)
 #detectStains("stains.jpg",10)

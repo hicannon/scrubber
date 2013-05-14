@@ -45,6 +45,14 @@ def genSVMTrainInstance(im, bounds, windowSize=10, returnAll = False, mask = Non
 	dataPos = []
 	dataNeg = []
 	combined = []
+	combinedNormalized = []
+	
+	maxMean = [-1, -1, -1]
+	maxMode = [-1, -1, -1]
+	maxMedian = [-1, -1, -1]
+	maxStd = [-1, -1, -1]
+	maxEdge = [-1, -1, -1]
+	
 	#print sx,sy,windowSize
 	for y in range(sy/windowSize):
 		y = y*windowSize		
@@ -70,22 +78,36 @@ def genSVMTrainInstance(im, bounds, windowSize=10, returnAll = False, mask = Non
 			wMean, wMode, wMedian, wStddev, wEdge = statistics(window, wMask)
 			#print wMean
 			meanDiff = [abs(a-b) for (a,b) in zip(wMean, mean)]
+			maxMean = [max(a,b) for (a,b) in zip(meanDiff, maxMean)]
 			modeDiff = [abs(a-b) for (a,b) in zip(wMode, mode)]
+			maxMode = [max(a,b) for (a,b) in zip(modeDiff, maxMode)]
 			medianDiff = [abs(a-b) for (a,b) in zip(wMedian, median)]
+			maxMedian = [max(a,b) for (a,b) in zip(medianDiff, maxMedian)]
 			stdDiff = [abs(a-b) for (a,b) in zip(wStddev, stddev)]
+			maxStd = [max(a,b) for (a,b) in zip(stdDiff, maxStd)]
+			edgeDiff = [abs(a-b) for (a,b) in zip(wEdge, edge)]
+			maxEdge = [max(a,b) for (a,b) in zip(edgeDiff, maxEdge)]
 			"""except:
 				meanDiff = [0]*3
 				modeDiff = [0]*3
 				medianDiff = [0]*3
 				stdDiff = [0]*3
 				wEdge = [0]*3"""
-			#todo Edge diff
-			if label==1:		
-				dataPos.append((label,meanDiff,modeDiff,medianDiff,stdDiff,wEdge))
-			else:
-				dataNeg.append((label,meanDiff,modeDiff,medianDiff,stdDiff,wEdge))
 			combined.append((label,meanDiff,modeDiff,medianDiff,stdDiff,wEdge))
-	return (dataPos, dataNeg, combined)
+	
+	#normalize
+	for (label, meanDiff, modeDiff, medianDiff, stdDiff, edgeDiff) in combined:
+		#meanDiff = [a/(b or 1) for (a,b) in zip(meanDiff, maxMean)]
+		#modeDiff = [a/(b or 1) for (a,b) in zip(modeDiff, maxMode)]
+		#medianDiff = [a/(b or 1) for (a,b) in zip(medianDiff, maxMedian)]
+		#stdDiff = [a/(b or 1) for (a,b) in zip(stdDiff, maxStd)]
+		#edgeDiff = [a/(b or 1) for (a,b) in zip(edgeDiff, maxEdge)]
+		combinedNormalized.append((label,meanDiff,modeDiff,medianDiff,stdDiff,edgeDiff))
+		if label==1:		
+			dataPos.append((label,meanDiff,modeDiff,medianDiff,stdDiff,edgeDiff))
+		else:
+			dataNeg.append((label,meanDiff,modeDiff,medianDiff,stdDiff,edgeDiff))
+	return (dataPos, dataNeg, combinedNormalized)
 	
 def inBounds(x,y, bound):
 	if (x>bound[0] and y>bound[1] and x<bound[2] and y<bound[3]):
