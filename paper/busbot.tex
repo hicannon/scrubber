@@ -21,7 +21,7 @@
 \usepackage{epsfig} % for postscript graphics files
 %\usepackage{mathptmx} % assumes new font selection scheme installed
 %\usepackage{times} % assumes new font selection scheme installed
-%\usepackage{amsmath} % assumes amsmath package installed
+\usepackage{amsmath} % assumes amsmath package installed
 %\usepackage{amssymb}  % assumes amsmath package installed
 
 \title{\LARGE \bf
@@ -89,13 +89,30 @@ Since a stain will usually stand out in comparison with the background, one natu
 After initial testing, the initial watershed segmentation turned out to be too sensitive to background textures. An alternative method, referred here as the \emph{average window} approach, was developed. In the average window approach, the image is converted to grayscale and discretized into fixed size square blocks or \emph{windows} and the average window is calculated. For a window size of 10x10, this yields a vector of length 100 which we use as the baseline. Next, we calculate distance of every window in the image from this baseline window and normalize by scaling each distance with respect to the maximum and minimum window distance. The distance metric used in this paper was L2-Norm. Finally, windows with a distance greater than a predefined threshold are then classified as stains. The motivation of this average window approach is that although each window may differ from some background texture, a window with a stain in it will differ more relatively to those that do not. In this way, we account for the differences created by a background, especially any repeating one.
 
 \subsection{Learning Features}
-A natural extension to the above approach is to apply classical Machine Learning methods to improve robustness. Rather than hand specifying how thresholds should be specified, we can learn them through supervised training methods. For this, we choose SVM's for its extensibility and effectiveness. For the features, we first split the image on a per channel basis, one for each of the three color channels. For each channel, we used the absolute difference between the average intensity in the window and the average, mean and mode intensity (per channel) of the image as features. In addition, the difference in variation of intensities within the window as well as the edginess of the window were also used as features. The motivation for the variance is that a stain might cover up an otherwise colorful background, so a decrease in variance might tell us something about whether the window is indeed a stain. Similarly, a window with a stain will have different degree of edginess as compared to those without. 
+A natural extension to the above approach is to apply classical Machine Learning methods to improve robustness. Rather than hand specifying how thresholds should be specified, we can learn them through supervised training methods. For this, we choose SVM's for its extensibility and effectiveness. For the features, we first split the image on a per channel basis, one for each of the three color channels. For each channel, we used the absolute difference between the average intensity in the window and the average, mean and mode intensity (per channel) of the image as features. In addition, the difference in variation of intensities within the window as well as the \emph{edginess} of the window were also used as features. To obtain a value for \emph{edginess} the image $L$ is convolved with an edge detecting filter, as described in equation 1 and the resulting convolved image is similarly discretized into the same size windows. The edginess value for a window is determined by summing the pixel values of all pixels in the window. Figure~\ref{fig:shitty_edges} demonstrates the edge filtering.
+
+\begin{equation}
+L_{edges} = \begin{bmatrix}
+-1 & -1 & -1 \\
+-1 & 8 & -1 \\
+-1 & -1 & -1
+\end{bmatrix} * L
+\end{equation}
+
+The motivation for the variance is that a stain might cover up an otherwise colorful background, so a decrease in variance might tell us something about whether the window is indeed a stain. Similarly, a window with a stain will have different degree of edginess as compared to those without. 
+
+\begin{figure}
+\centering
+\includegraphics[width=1\columnwidth]{assets/shitty_edges.png}
+\caption{Shitty Edges}
+\label{fig:shitty_edges}
+\end{figure}
 
 \section{Perception Results and Discussion}
 The complete dataset used to evaluate the algorithms contains about 70 images, which results in roughly 70,000 training examples (at a window size of 10x10). To ensue that distribution of positive and negative examples is roughly evenly split, we took a simple random sample of the negative training examples. For every picture, we divide it into rectangular regions as governed by a window size parameter. These rectangular regions are used to classify windows as stained or non-stained. If a window overlaps with a labeled stain region, that window is considered to be correctly identified.
 
 \subsection{Segmentation}
-Several disadvantages were discovered through experimentation with the watershed segmentation. The watershed segmentation approach was unable to handle patterned backgrounds, blemishes and textures such as wood grain, as figures~\ref{fig:segmentation_fail} and~\ref{fig:before_segment} demonstrate. Futhermore, upon segmentation it was often difficult to determine which portion of the mask was the stain and which was the background. Additionally the method was hard to modify, and therefore improve, because any changes could only be done through pre and post processing. These initial limitations suggested general limitations that any naive segmentation approach towards stain detection would suffer from. The established definition of a ``stain'' is general enough to include backgrounds of differing materials and as a result the effectiveness of segmentation suffers. 
+Several disadvantages were discovered through experimentation with the watershed segmentation. The watershed segmentation approach was unable to handle patterned backgrounds, blemishes and textures such as wood grain, as figures~\ref{fig:segmentation_fail} and~\ref{fig:before_segment} demonstrate. Futhermore, upon segmentation it was often difficult to determine which portion of the mask was the stain and which was the background. Additionally the method was hard to modify, and therefore improve, because any changes could only be done through pre and post processing. These initial limitations suggested general limitations that any naive segmentation approach towards stain detection would suffer from. The established definition of a ``stain'' is general enough to include backgrounds of differing materials and as a result the effectiveness of segmentation suffers.
 
 \begin{figure}
 \centering
