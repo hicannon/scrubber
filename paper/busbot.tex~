@@ -217,7 +217,7 @@ Our virtual robot consisted of a PR2 with a head mounted Kinect sensor. The Kine
 Using the OpenNI framework with the Kinect sensor we can register the point cloud with the RGB images and transform points between the 2D RGB image plane and the robot coordinate frames. The point cloud data is preprocessed using RANSAC to determine the dominant plane in the scene, which is the table. The resulting segmented point cloud is then used to create a mask for the 2D RGB image, which excludes objects on the table as well as areas of the image not on the table. 2D RGB images are then captured from the Kinect RGB camera and processed using the SVM window algorithm for stain detection discussed previously. Points on the 2D RGB image plane determined to be stained are transformed to the robot coordinate frame and kinematics processes move the robot arm and perform a scrubbing routine.
 
 \section{Conclusions}
-DERP CONCLUSIONS
+In this paper, we discused a learning approach to general detection of stains. We focused on the crating of features that would describe stains, which by nature is an elusive category. We evaluated our results on an original dataset tagged by hand, showing great results for most but the hardest images. 
 
 \section*{Acknowledgments}
 We would like to thank Professor Saxena and the CS4758 teaching assistants for providing us with the opportunity, resources and knowledge to accomplish this project.
