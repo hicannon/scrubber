@@ -17,7 +17,8 @@
 
 
 % The following packages can be found on http:\\www.ctan.org
-\usepackage{graphics} % for pdf, bitmapped graphics files
+\usepackage{graphics} % for pdf, bitmapped graphics file
+\usepackage{multicol}
 \usepackage{epsfig} % for postscript graphics files
 %\usepackage{mathptmx} % assumes new font selection scheme installed
 %\usepackage{times} % assumes new font selection scheme installed
@@ -89,7 +90,9 @@ Since a stain will usually stand out in comparison with the background, one natu
 After initial testing, the initial watershed segmentation turned out to be too sensitive to background textures. An alternative method, referred here as the \emph{average window} approach, was developed. In the average window approach, the image is converted to grayscale and discretized into fixed size square blocks or \emph{windows} and the average window is calculated. For a window size of 10x10, this yields a vector of length 100 which we use as the baseline. Next, we calculate distance of every window in the image from this baseline window and normalize by scaling each distance with respect to the maximum and minimum window distance. The distance metric used in this paper was L2-Norm. Finally, windows with a distance greater than a predefined threshold are then classified as stains. The motivation of this average window approach is that although each window may differ from some background texture, a window with a stain in it will differ more relatively to those that do not. In this way, we account for the differences created by a background, especially any repeating one.
 
 \subsection{Learning Features}
-A natural extension to the above approach is to apply classical Machine Learning methods to improve robustness. Rather than manually specifying how thresholds should be specified, we can learn them through supervised training methods. For this, we choose SVM's for its extensibility and effectiveness. For the features, we first split the image on a per channel basis, one for each of the three color channels. For each channel, we used the absolute difference between the average intensity in the window and the average, mean and mode intensity (per channel) of the image as features. In addition, the difference in variation of intensities within the window as well as the \emph{edginess} of the window were also used as features. To obtain a value for \emph{edginess} the image $L$ is convolved with an edge detecting filter, as described in equation 1 and the resulting convolved image is similarly discretized into the same size windows. The edginess value for a window is determined by summing the pixel values of all pixels in the window. Figure~\ref{fig:shitty_edges} demonstrates the edge filtering.
+A natural extension to the above approach is to apply classical Machine Learning methods to improve robustness. Rather than hand specifying how thresholds should be specified, we can learn them through supervised training methods. For this, we choose SVM's for its extensibility and effectiveness. For the features, we first split the image on a per channel basis, one for each of the three color channels. For each channel, we used the absolute difference between the average intensity in the window and the average, mean and mode intensity (per channel) of the image as features. The difference in variation of intensities within the window was used as a feature as well. The motivation for the variance is that a stain might cover up an otherwise colorful background, so a decrease in variance might tell us something about whether the window is indeed a stain. 
+
+Finally the \emph{edginess} of the window was also used as a feature. To obtain a value for \emph{edginess} the image $L$ is convolved with an edge detecting filter, as described in equation 1 and the resulting convolved image is similarly discretized into the same size windows. The edginess value for a window is determined by summing the pixel values of all pixels in the window. Figure~\ref{fig:shitty_edges} demonstrates the edge filtering on the image featured in figure~\ref{fig:ketchup} in the appendix. Note the difference in edginess between the stained sections of the carpet and the carpet itself. Qualitative results like this suggest that edginess is an important feature of stains that alter the texture of the material they reside on.
 
 \begin{equation}
 L_{edges} = \begin{bmatrix}
@@ -98,8 +101,6 @@ L_{edges} = \begin{bmatrix}
 -1 & -1 & -1
 \end{bmatrix} * L
 \end{equation}
-
-The motivation for the variance is that a stain might cover up an otherwise colorful background, so a decrease in variance might tell us something about whether the window is indeed a stain. Similarly, a window with a stain will have different degree of edginess as compared to those without. 
 
 \begin{figure}
 \centering
@@ -252,8 +253,52 @@ We would like to thank Professor Saxena and the CS4758 teaching assistants for p
 \bibitem{svm_light} T. Joachims, Making large-Scale SVM Learning Practical. Advances in Kernel Methods - Support Vector Learning, B. Schölkopf and C. Burges and A. Smola (ed.), MIT-Press, 1999.
 
 \end{thebibliography}
+\newpage
+\clearpage
+\onecolumn
 
+\section*{Appendix}
 
+\begin{figure}[hb]
+\centering
+\includegraphics[width=1\textwidth]{assets/browncarpet.png}
+\caption{Brown carpet}
+\label{fig:contrast_fail}
+\end{figure}
 
+\begin{figure}[hb]
+\centering
+\includegraphics[width=1\textwidth]{assets/cameratable.png}
+\caption{Camera table}
+\label{fig:contrast_fail}
+\end{figure}
+
+\begin{figure}[hb]
+\centering
+\includegraphics[width=1\textwidth]{assets/carpet.png}
+\caption{Carpet}
+\label{fig:contrast_fail}
+\end{figure}
+
+\begin{figure}[hb!]
+\centering
+\includegraphics[width=1\textwidth]{assets/ketchup.png}
+\caption{Carpet}
+\label{fig:ketchup}
+\end{figure}
+
+\begin{figure}[hb!]
+\centering
+\includegraphics[width=1\textwidth]{assets/milkface.png}
+\caption{Carpet}
+\label{fig:contrast_fail}
+\end{figure}
+
+\begin{figure}[hb!]
+\centering
+\includegraphics[width=1\textwidth]{assets/wood.png}
+\caption{Carpet}
+\label{fig:contrast_fail}
+\end{figure}
 
 \end{document}
